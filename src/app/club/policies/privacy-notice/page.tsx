@@ -5,7 +5,7 @@ import { PolicyPage } from "@/components/ui/PolicyPage";
 export const metadata: Metadata = {
   title: "Privacy Notice",
   description:
-    "Feering Falcons Youth Football Club privacy notice — how we collect, use and protect your personal data.",
+    "Feering Falcons Youth Football Club privacy notice -how we collect, use and protect your personal data.",
 };
 
 export default function PrivacyNoticePage() {

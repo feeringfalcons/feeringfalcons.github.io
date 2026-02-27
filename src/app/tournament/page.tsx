@@ -6,13 +6,13 @@ import { TOURNAMENT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "5-A-Side Tournament 2026",
-  description: `Feering Falcons 5-A-Side Tournament — ${TOURNAMENT.date} at Elm Farm. Teams from U7 to U15, £50 per team entry.`,
+  description: `Feering Falcons 5-A-Side Tournament -${TOURNAMENT.date} at Elm Farm. Teams from U7 to U15, £50 per team entry.`,
 };
 
 export default function TournamentPage() {
   return (
     <>
-      {/* Hero — full event poster */}
+      {/* Hero -full event poster */}
       <section className="bg-falcon-red pb-20 pt-16 sm:pb-28 sm:pt-24">
         <Container>
           <p className="font-heading text-sm tracking-widest text-white/40">
@@ -40,7 +40,7 @@ export default function TournamentPage() {
         </Container>
       </section>
 
-      {/* Deadline — punchy red stripe */}
+      {/* Deadline -punchy red stripe */}
       <section className="bg-falcon-red-dark py-5">
         <Container>
           <p className="font-heading text-lg tracking-wider text-white sm:text-xl">
@@ -50,7 +50,7 @@ export default function TournamentPage() {
         </Container>
       </section>
 
-      {/* Details — charcoal section */}
+      {/* Details -charcoal section */}
       <section className="bg-falcon-charcoal py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -113,7 +113,7 @@ export default function TournamentPage() {
         </Container>
       </section>
 
-      {/* Payment — red section */}
+      {/* Payment -red section */}
       <section className="bg-falcon-red py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -168,7 +168,7 @@ export default function TournamentPage() {
         </Container>
       </section>
 
-      {/* Entry form — charcoal section */}
+      {/* Entry form -charcoal section */}
       <section id="enter" className="bg-falcon-charcoal py-16 sm:py-20">
         <Container>
           <div className="mx-auto max-w-xl">
@@ -186,7 +186,7 @@ export default function TournamentPage() {
         </Container>
       </section>
 
-      {/* Contact — red bottom */}
+      {/* Contact -red bottom */}
       <section className="bg-falcon-red py-10 sm:py-12">
         <Container>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

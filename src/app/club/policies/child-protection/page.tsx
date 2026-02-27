@@ -5,7 +5,7 @@ import { CLUB } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Child Protection Policy",
   description:
-    "Feering Falcons Youth Football Club child protection policy — safeguarding the welfare of every young player.",
+    "Feering Falcons Youth Football Club child protection policy -safeguarding the welfare of every young player.",
 };
 
 export default function ChildProtectionPage() {

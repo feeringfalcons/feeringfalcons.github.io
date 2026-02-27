@@ -4,7 +4,7 @@ import { PolicyPage } from "@/components/ui/PolicyPage";
 export const metadata: Metadata = {
   title: "Data Protection Policy",
   description:
-    "Feering Falcons Youth Football Club data protection policy — how we handle personal data in compliance with GDPR.",
+    "Feering Falcons Youth Football Club data protection policy -how we handle personal data in compliance with GDPR.",
 };
 
 export default function DataProtectionPage() {

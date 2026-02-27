@@ -6,13 +6,13 @@ import { CLUB } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Sponsorship Opportunities",
   description:
-    "Sponsor Feering Falcons Youth Football Club — ground banner and pitch map sponsorship opportunities for local businesses.",
+    "Sponsor Feering Falcons Youth Football Club -ground banner and pitch map sponsorship opportunities for local businesses.",
 };
 
 export default function SponsorshipPage() {
   return (
     <>
-      {/* Opening — leads with the pitch, no red hero */}
+      {/* Opening -leads with the pitch, no red hero */}
       <section className="pb-12 pt-16 sm:pt-24">
         <Container>
           <ScrollReveal animation="animate-slide-in-left">
@@ -33,7 +33,7 @@ export default function SponsorshipPage() {
         </Container>
       </section>
 
-      {/* Pricing — the big reveal */}
+      {/* Pricing -the big reveal */}
       <section className="bg-falcon-charcoal py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -118,14 +118,14 @@ export default function SponsorshipPage() {
           <ScrollReveal>
             <div className="max-w-2xl">
               <p className="text-lg leading-relaxed text-falcon-charcoal/70">
-                Feering Falcons is more than just football — we&apos;re a
+                Feering Falcons is more than just football -we&apos;re a
                 community of local families, week in, week out. These
-                sponsorships don&apos;t just promote businesses — they help
+                sponsorships don&apos;t just promote businesses -they help
                 create a more professional, welcoming atmosphere for all our
                 players and visitors.
               </p>
               <p className="mt-4 text-falcon-charcoal/60">
-                We handle all logistics — installation, maintenance, and
+                We handle all logistics -installation, maintenance, and
                 keeping your banner in top shape.
               </p>
             </div>
@@ -133,7 +133,7 @@ export default function SponsorshipPage() {
         </Container>
       </section>
 
-      {/* CTA — red closing */}
+      {/* CTA -red closing */}
       <section className="bg-falcon-red py-16 sm:py-20">
         <Container>
           <ScrollReveal>

@@ -5,7 +5,7 @@ import { PolicyPage } from "@/components/ui/PolicyPage";
 export const metadata: Metadata = {
   title: "Complaints Procedure",
   description:
-    "How to raise a complaint at Feering Falcons Youth Football Club — reporting discrimination or breaches of club policies.",
+    "How to raise a complaint at Feering Falcons Youth Football Club -reporting discrimination or breaches of club policies.",
 };
 
 export default function ComplaintsProcedurePage() {

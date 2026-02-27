@@ -4,7 +4,7 @@ import { PolicyPage } from "@/components/ui/PolicyPage";
 export const metadata: Metadata = {
   title: "Equality Policy",
   description:
-    "Feering Falcons Youth Football Club equality policy — ensuring everyone is treated fairly and with respect.",
+    "Feering Falcons Youth Football Club equality policy -ensuring everyone is treated fairly and with respect.",
 };
 
 export default function EqualityPolicyPage() {

@@ -8,7 +8,7 @@ import { CLUB, POLICIES } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Club Info",
   description:
-    "Everything you need to know about Feering Falcons Youth Football Club — location, safeguarding, policies, and contact details.",
+    "Everything you need to know about Feering Falcons Youth Football Club -location, safeguarding, policies, and contact details.",
 };
 
 export default function ClubInfoPage() {
@@ -41,7 +41,7 @@ export default function ClubInfoPage() {
         </Container>
       </nav>
 
-      {/* Opening — leads with the map, no red hero */}
+      {/* Opening -leads with the map, no red hero */}
       <section id="find-us" className="pt-8 pb-16 sm:pt-12 sm:pb-20">
         <Container>
           <ScrollReveal>
@@ -84,7 +84,7 @@ export default function ClubInfoPage() {
         </Container>
       </section>
 
-      {/* Officers — compact */}
+      {/* Officers -compact */}
       <section id="officers" className="border-t border-falcon-border py-12 sm:py-16">
         <Container>
           <ScrollReveal>
@@ -118,7 +118,7 @@ export default function ClubInfoPage() {
         </Container>
       </section>
 
-      {/* Safeguarding — red, serious */}
+      {/* Safeguarding -red, serious */}
       <section id="safeguarding" className="bg-falcon-red py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -141,7 +141,7 @@ export default function ClubInfoPage() {
                     <span className="font-medium text-white">
                       {CLUB.officers.childWelfare.name}
                     </span>
-                    {" — "}
+                    {" -"}
                     <a
                       href={`mailto:${CLUB.officers.childWelfare.email}`}
                       className="text-white/70 underline hover:text-white"
@@ -196,7 +196,7 @@ export default function ClubInfoPage() {
         </Container>
       </section>
 
-      {/* Policies — simple list */}
+      {/* Policies -simple list */}
       <section id="policies" className="py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -276,7 +276,7 @@ export default function ClubInfoPage() {
         </Container>
       </section>
 
-      {/* Contact — charcoal section */}
+      {/* Contact -charcoal section */}
       <section id="contact" className="bg-falcon-charcoal py-16 sm:py-20">
         <Container>
           <ScrollReveal>

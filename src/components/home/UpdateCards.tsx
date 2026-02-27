@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export function UpdateCards() {
   return (
     <>
-      {/* Tournament banner — the main event */}
+      {/* Tournament banner -the main event */}
       <section className="section-angle-both bg-falcon-charcoal py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>

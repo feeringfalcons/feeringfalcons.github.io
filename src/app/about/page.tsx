@@ -7,13 +7,13 @@ import { CLUB } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Feering Falcons Youth Football Club — developing young footballers in North Essex since 1978.",
+    "Learn about Feering Falcons Youth Football Club -developing young footballers in North Essex since 1978.",
 };
 
 export default function AboutPage() {
   return (
     <article>
-      {/* Opening — no red hero, straight into the story */}
+      {/* Opening -no red hero, straight into the story */}
       <section className="pb-8 pt-16 sm:pt-24">
         <Container>
           <ScrollReveal animation="animate-slide-in-left">
@@ -56,7 +56,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Pull quote — full bleed red */}
+      {/* Pull quote -full bleed red */}
       <section className="bg-falcon-red py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -74,7 +74,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Teams — flowing text */}
+      {/* Teams -flowing text */}
       <section id="teams" className="py-16 sm:py-20">
         <Container>
           <ScrollReveal>
@@ -105,7 +105,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Match days — charcoal, angular */}
+      {/* Match days -charcoal, angular */}
       <section className="section-angle-both bg-falcon-charcoal py-24 sm:py-32">
         <Container>
           <ScrollReveal>
@@ -121,7 +121,7 @@ export default function AboutPage() {
               </p>
               <p className="mt-4 leading-relaxed text-white/60">
                 All coaches are DBS-checked with FA qualifications. We take
-                safeguarding seriously — every child is looked after by trained,
+                safeguarding seriously -every child is looked after by trained,
                 dedicated volunteers who love the game.
               </p>
             </div>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                     PRESENTATION NIGHT
                   </p>
                   <p className="mt-2 text-falcon-charcoal/60">
-                    {CLUB.presentationNight} — celebrating the season with
+                    {CLUB.presentationNight} -celebrating the season with
                     awards, trophies, and recognition for every player.
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Join Us — red section, form */}
+      {/* Join Us -red section, form */}
       <section id="join" className="bg-falcon-red py-16 sm:py-20">
         <Container>
           <ScrollReveal>
