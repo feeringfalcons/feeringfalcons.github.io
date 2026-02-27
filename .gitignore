@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# reference files (not part of the site)
+/docs/
+*.doc
+"2026 Five A Side Invite Letter.pdf"
+"5aside flyer.png"
+"Managers Guide - 2021.doc"
