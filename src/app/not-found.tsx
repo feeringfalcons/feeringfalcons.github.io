@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <Container className="flex min-h-[60vh] flex-col items-center justify-center py-16 text-center">
       <Image
-        src="/logo.png"
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
         alt="Feering Falcons"
         width={100}
         height={100}

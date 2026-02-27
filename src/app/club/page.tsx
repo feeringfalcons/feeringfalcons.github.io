@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ContactForm } from "@/components/ui/ContactForm";
@@ -207,7 +208,7 @@ export default function ClubInfoPage() {
             </p>
             <div className="mt-6">
               {POLICIES.map((policy) => (
-                <a
+                <Link
                   key={policy.title}
                   href={policy.href}
                   target="_blank"
@@ -233,7 +234,7 @@ export default function ClubInfoPage() {
                       />
                     </svg>
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
             <div className="mt-4">

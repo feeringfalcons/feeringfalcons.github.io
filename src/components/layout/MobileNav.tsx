@@ -43,7 +43,7 @@ export function MobileNav({
         <div className="flex items-center justify-between border-b border-falcon-border px-4 py-3">
           <Link href="/" onClick={onClose} className="flex items-center gap-3">
             <Image
-              src="/logo.png"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
               alt="Feering Falcons"
               width={40}
               height={40}

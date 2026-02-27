@@ -1,13 +1,16 @@
 import type { NextConfig } from "next";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const basePath = isGitHubPages ? "/feering-falcons-yfc" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
-  ...(isGitHubPages && {
-    basePath: "/feering-falcons-yfc",
-    assetPrefix: "/feering-falcons-yfc/",
-  }),
+  images: { unoptimized: true },
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;

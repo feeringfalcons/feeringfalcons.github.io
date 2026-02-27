@@ -9,7 +9,7 @@ export function Hero() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:gap-16">
           <div className="lg:flex-1">
             <Image
-              src="/logo.png"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
               alt="Feering Falcons Youth Football Club"
               width={100}
               height={100}
