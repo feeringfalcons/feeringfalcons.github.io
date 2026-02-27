@@ -66,7 +66,7 @@ export const CLUB = {
     "U11 Blues",
     "U11 Reds",
     "U12 Blues",
-    "U12 Reds",
+    "U12 Raptors",
     "U13",
     "U14",
   ],
