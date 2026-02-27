@@ -3,70 +3,57 @@ import { CLUB } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-falcon-charcoal text-white">
+    <footer className="border-t-4 border-falcon-red bg-falcon-charcoal text-white">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Club info */}
           <div>
-            <p className="font-heading text-xl font-bold">{CLUB.shortName}</p>
-            <p className="mt-1 text-sm text-white/60">Est. {CLUB.founded}</p>
-            <p className="mt-3 text-sm text-white/80">
+            <p className="font-heading text-2xl">{CLUB.shortName}</p>
+            <p className="mt-1 text-sm text-white/50">Est. {CLUB.founded}</p>
+            <p className="mt-4 text-sm leading-relaxed text-white/70">
               {CLUB.ground.fullAddress}
+            </p>
+            <p className="mt-1 text-sm text-white/70">
+              {CLUB.accreditation}
             </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <p className="font-heading text-sm font-bold uppercase tracking-wider text-white/50">
-              Quick Links
+            <p className="font-heading text-sm tracking-widest text-white/40">
+              QUICK LINKS
             </p>
-            <ul className="mt-3 space-y-2">
-              <li>
-                <Link
-                  href="/safeguarding"
-                  className="text-sm text-white/80 transition-colors hover:text-falcon-red-light"
-                >
-                  Safeguarding
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/policies"
-                  className="text-sm text-white/80 transition-colors hover:text-falcon-red-light"
-                >
-                  Policies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-sm text-white/80 transition-colors hover:text-falcon-red-light"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/tournament"
-                  className="text-sm text-white/80 transition-colors hover:text-falcon-red-light"
-                >
-                  Tournament
-                </Link>
-              </li>
+            <ul className="mt-4 space-y-3">
+              {[
+                { label: "Join a Team", href: "/about#join" },
+                { label: "Find Us", href: "/club#find-us" },
+                { label: "Tournament Entry", href: "/tournament#enter" },
+                { label: "Safeguarding", href: "/club#safeguarding" },
+                { label: "Sponsorship", href: "/sponsorship" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 transition-colors hover:text-falcon-red-light"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Social */}
           <div>
-            <p className="font-heading text-sm font-bold uppercase tracking-wider text-white/50">
-              Follow Us
+            <p className="font-heading text-sm tracking-widest text-white/40">
+              FOLLOW US
             </p>
-            <div className="mt-3 flex gap-4">
+            <div className="mt-4 flex gap-5">
               <a
                 href={CLUB.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/80 transition-colors hover:text-falcon-red-light"
+                className="text-white/70 transition-colors hover:text-falcon-red-light"
                 aria-label="Facebook"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -77,7 +64,7 @@ export function Footer() {
                 href={CLUB.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/80 transition-colors hover:text-falcon-red-light"
+                className="text-white/70 transition-colors hover:text-falcon-red-light"
                 aria-label="Instagram"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -89,11 +76,10 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 border-t border-white/10 pt-6 text-center">
-          <p className="font-heading text-sm italic text-white/50">
+        <div className="mt-10 border-t border-white/10 pt-6">
+          <p className="text-sm italic text-white/50">
             {CLUB.originLine}
           </p>
-          <p className="mt-1 text-xs text-white/40">{CLUB.accreditation}</p>
         </div>
       </div>
     </footer>

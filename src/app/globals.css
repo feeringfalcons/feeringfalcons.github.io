@@ -4,12 +4,12 @@
   --color-falcon-red: #C41E3A;
   --color-falcon-red-dark: #9B1830;
   --color-falcon-red-light: #E8435A;
-  --color-falcon-white: #FFFFFF;
+  --color-falcon-cream: #FFF8F0;
   --color-falcon-charcoal: #1A1A1A;
-  --color-falcon-grey: #F5F5F5;
-  --color-falcon-grey-mid: #E0E0E0;
-  --font-heading: var(--font-oswald), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  --color-falcon-charcoal-light: #2A2A2A;
+  --color-falcon-border: #E8DDD0;
+  --font-heading: var(--font-bebas-neue), system-ui, sans-serif;
+  --font-body: var(--font-source-serif), Georgia, serif;
 }
 
 html {
@@ -19,9 +19,148 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--color-falcon-charcoal);
-  background: var(--color-falcon-white);
+  background: var(--color-falcon-cream);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ── Angular section dividers (falcon-wing motif) ── */
+
+.section-angle {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
+}
+
+.section-angle-both {
+  clip-path: polygon(0 3rem, 100% 0, 100% calc(100% - 3rem), 0 100%);
+}
+
+@media (min-width: 640px) {
+  .section-angle {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5rem), 0 100%);
+  }
+  .section-angle-both {
+    clip-path: polygon(0 5rem, 100% 0, 100% calc(100% - 5rem), 0 100%);
+  }
+}
+
+/* ── Animations ── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Stagger children ── */
+
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
+
+/* ── Nav link animated underline ── */
+
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-falcon-red);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline:focus-visible::after {
+  width: 100%;
+}
+
+/* ── Scroll offset for sticky header ── */
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* ── Focus indicators ── */
+
+:focus-visible {
+  outline: 2px solid var(--color-falcon-red);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--color-falcon-red);
+  box-shadow: 0 0 0 1px var(--color-falcon-red);
+}
+
+/* ── Form inputs (sharp, no rounded) ── */
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  border-radius: 0 !important;
+}
+
+/* ── Selection colour ── */
+
+::selection {
+  background: var(--color-falcon-red);
+  color: white;
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-slide-in-left {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .nav-link-underline::after {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }

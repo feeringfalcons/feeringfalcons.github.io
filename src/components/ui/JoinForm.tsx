@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 
-export function ContactForm() {
+export function JoinForm() {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -34,16 +34,16 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div role="status" className="border-l-4 border-green-600 bg-green-50 p-6">
-        <p className="font-heading text-xl text-green-800">MESSAGE SENT</p>
+        <p className="font-heading text-xl text-green-800">ENQUIRY SENT</p>
         <p className="mt-2 text-sm text-green-700">
-          We&apos;ll get back to you as soon as we can.
+          Your team manager or secretary will be in touch shortly.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="mt-4 text-sm text-falcon-red hover:underline"
         >
-          Send another message
+          Send another enquiry
         </button>
       </div>
     );
@@ -56,18 +56,23 @@ export function ContactForm() {
         name="access_key"
         value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "YOUR_ACCESS_KEY_HERE"}
       />
+      <input
+        type="hidden"
+        name="subject"
+        value="New Player Enquiry"
+      />
       <input type="checkbox" name="botcheck" className="hidden" />
 
       <div>
         <label
-          htmlFor="contact-name"
+          htmlFor="join-name"
           className="block text-sm font-medium text-falcon-charcoal"
         >
-          Name <span className="text-falcon-red">*</span>
+          Your Name <span className="text-falcon-red">*</span>
         </label>
         <input
           type="text"
-          id="contact-name"
+          id="join-name"
           name="name"
           required
           className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
@@ -76,14 +81,30 @@ export function ContactForm() {
 
       <div>
         <label
-          htmlFor="contact-email"
+          htmlFor="join-age"
+          className="block text-sm font-medium text-falcon-charcoal"
+        >
+          Child&apos;s Age Group
+        </label>
+        <input
+          type="text"
+          id="join-age"
+          name="age_group"
+          placeholder="e.g. Under 8"
+          className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal placeholder:text-falcon-charcoal/40 focus:border-falcon-red"
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor="join-email"
           className="block text-sm font-medium text-falcon-charcoal"
         >
           Email <span className="text-falcon-red">*</span>
         </label>
         <input
           type="email"
-          id="contact-email"
+          id="join-email"
           name="email"
           required
           className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
@@ -92,31 +113,15 @@ export function ContactForm() {
 
       <div>
         <label
-          htmlFor="contact-subject"
+          htmlFor="join-message"
           className="block text-sm font-medium text-falcon-charcoal"
         >
-          Subject
-        </label>
-        <input
-          type="text"
-          id="contact-subject"
-          name="subject"
-          className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="contact-message"
-          className="block text-sm font-medium text-falcon-charcoal"
-        >
-          Message <span className="text-falcon-red">*</span>
+          Anything else we should know?
         </label>
         <textarea
-          id="contact-message"
+          id="join-message"
           name="message"
-          required
-          rows={5}
+          rows={3}
           className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
         />
       </div>
@@ -137,7 +142,7 @@ export function ContactForm() {
         disabled={status === "submitting"}
         className="w-full bg-falcon-red px-6 py-3 font-heading tracking-wider text-white transition-colors hover:bg-falcon-red-dark disabled:opacity-50"
       >
-        {status === "submitting" ? "SENDING..." : "SEND MESSAGE"}
+        {status === "submitting" ? "SENDING..." : "REGISTER INTEREST"}
       </button>
     </form>
   );

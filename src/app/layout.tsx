@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { Bebas_Neue, Source_Serif_4 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
-const oswald = Oswald({
-  variable: "--font-oswald",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
   display: "swap",
 });
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Feering Falcons YFC",
   },
   description:
-    "Youth football club based in Feering and Kelvedon, Essex. Teams from Under 7 to Under 16 playing in the Colchester and District Youth League.",
+    "Youth football club based in Feering and Kelvedon, Essex. Teams from Under 6 to Under 14 playing in the Colchester & District and Blackwater & Dengie youth leagues.",
   openGraph: {
     type: "website",
     locale: "en_GB",
@@ -37,9 +38,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${oswald.variable} antialiased`}>
+      <body
+        className={`${bebasNeue.variable} ${sourceSerif.variable} antialiased`}
+      >
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

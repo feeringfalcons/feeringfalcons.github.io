@@ -26,7 +26,6 @@ export function EntryForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // Add age group entries as formatted text
     const entries = TOURNAMENT.ageGroups
       .filter((ag) => teams[ag] > 0)
       .map((ag) => `${ag}: ${teams[ag]} team(s)`)
@@ -54,9 +53,9 @@ export function EntryForm() {
   if (status === "success") {
     return (
       <div className="space-y-6">
-        <div className="rounded-md border border-green-200 bg-green-50 p-6 text-center">
-          <p className="font-heading text-lg font-bold text-green-800">
-            Entry submitted!
+        <div role="status" className="border-l-4 border-green-600 bg-green-50 p-6">
+          <p className="font-heading text-xl text-green-800">
+            ENTRY SUBMITTED
           </p>
           <p className="mt-2 text-sm text-green-700">
             You&apos;ll receive a confirmation email shortly. Please arrange
@@ -64,9 +63,9 @@ export function EntryForm() {
           </p>
         </div>
 
-        <div className="border-l-4 border-falcon-red bg-falcon-grey px-5 py-4">
-          <p className="font-heading font-bold text-falcon-charcoal">
-            Payment Reminder
+        <div className="border-l-4 border-falcon-charcoal bg-falcon-charcoal/5 p-5">
+          <p className="font-heading text-lg text-falcon-charcoal">
+            PAYMENT REMINDER
           </p>
           <div className="mt-2 space-y-1 text-sm text-falcon-charcoal/80">
             <p>
@@ -85,8 +84,7 @@ export function EntryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Web3Forms key */}
+    <form onSubmit={handleSubmit} className="space-y-5">
       <input
         type="hidden"
         name="access_key"
@@ -102,10 +100,8 @@ export function EntryForm() {
         name="from_name"
         value="Feering Falcons Tournament Entry"
       />
-      {/* Honeypot */}
       <input type="checkbox" name="botcheck" className="hidden" />
 
-      {/* Club details */}
       <div>
         <label
           htmlFor="club_name"
@@ -118,7 +114,7 @@ export function EntryForm() {
           id="club_name"
           name="club_name"
           required
-          className="mt-1 block w-full rounded-md border border-falcon-grey-mid px-4 py-3 text-falcon-charcoal focus:border-falcon-red focus:outline-none focus:ring-1 focus:ring-falcon-red"
+          className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
         />
       </div>
 
@@ -161,24 +157,24 @@ export function EntryForm() {
           id="contact_name"
           name="contact_name"
           required
-          className="mt-1 block w-full rounded-md border border-falcon-grey-mid px-4 py-3 text-falcon-charcoal focus:border-falcon-red focus:outline-none focus:ring-1 focus:ring-falcon-red"
+          className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
         />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label
             htmlFor="contact_phone"
             className="block text-sm font-medium text-falcon-charcoal"
           >
-            Contact Mobile <span className="text-falcon-red">*</span>
+            Mobile Number <span className="text-falcon-red">*</span>
           </label>
           <input
             type="tel"
             id="contact_phone"
             name="contact_phone"
             required
-            className="mt-1 block w-full rounded-md border border-falcon-grey-mid px-4 py-3 text-falcon-charcoal focus:border-falcon-red focus:outline-none focus:ring-1 focus:ring-falcon-red"
+            className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
           />
         </div>
         <div>
@@ -186,14 +182,14 @@ export function EntryForm() {
             htmlFor="contact_email"
             className="block text-sm font-medium text-falcon-charcoal"
           >
-            Contact Email <span className="text-falcon-red">*</span>
+            Email <span className="text-falcon-red">*</span>
           </label>
           <input
             type="email"
             id="contact_email"
             name="contact_email"
             required
-            className="mt-1 block w-full rounded-md border border-falcon-grey-mid px-4 py-3 text-falcon-charcoal focus:border-falcon-red focus:outline-none focus:ring-1 focus:ring-falcon-red"
+            className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
           />
         </div>
       </div>
@@ -203,15 +199,17 @@ export function EntryForm() {
         <p className="text-sm font-medium text-falcon-charcoal">
           Number of Teams per Age Group
         </p>
-        <div className="mt-3 space-y-2">
+        <div className="mt-3 space-y-1">
           {TOURNAMENT.ageGroups.map((ag) => {
-            const maxSquad = (TOURNAMENT.squadSizes.small.groups as readonly string[]).includes(ag)
+            const maxSquad = (
+              TOURNAMENT.squadSizes.small.groups as readonly string[]
+            ).includes(ag)
               ? TOURNAMENT.squadSizes.small.max
               : TOURNAMENT.squadSizes.large.max;
             return (
               <div
                 key={ag}
-                className="flex items-center justify-between border-b border-falcon-grey py-2"
+                className="flex items-center justify-between border-b border-falcon-border py-2"
               >
                 <div>
                   <span className="font-medium text-falcon-charcoal">{ag}</span>
@@ -227,7 +225,7 @@ export function EntryForm() {
                   onChange={(e) =>
                     updateTeams(ag, parseInt(e.target.value) || 0)
                   }
-                  className="w-20 rounded-md border border-falcon-grey-mid px-3 py-2 text-center text-falcon-charcoal focus:border-falcon-red focus:outline-none focus:ring-1 focus:ring-falcon-red"
+                  className="w-20 border border-falcon-border bg-white px-3 py-2 text-center text-falcon-charcoal focus:border-falcon-red"
                 />
               </div>
             );
@@ -236,17 +234,17 @@ export function EntryForm() {
       </div>
 
       {/* Total */}
-      <div className="border-l-4 border-falcon-red bg-falcon-grey px-5 py-4">
+      <div className="border-l-4 border-falcon-red bg-falcon-red/5 px-5 py-4">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-falcon-charcoal/60">Total teams</p>
-            <p className="font-heading text-xl font-bold text-falcon-charcoal">
+            <p className="font-heading text-2xl text-falcon-charcoal">
               {totalTeams}
             </p>
           </div>
           <div className="text-right">
             <p className="text-sm text-falcon-charcoal/60">Total entry fee</p>
-            <p className="font-heading text-2xl font-bold text-falcon-red">
+            <p className="font-heading text-3xl text-falcon-red">
               £{totalFee}
             </p>
           </div>
@@ -254,17 +252,25 @@ export function EntryForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-600">
-          Something went wrong. Please try again.
+        <p role="alert" className="text-sm text-red-600">
+          Sorry, that didn&apos;t go through. Check your connection and try
+          again, or email{" "}
+          <a
+            href={`mailto:${TOURNAMENT.contact.email}`}
+            className="underline"
+          >
+            {TOURNAMENT.contact.email}
+          </a>{" "}
+          directly.
         </p>
       )}
 
       <button
         type="submit"
         disabled={status === "submitting" || totalTeams === 0}
-        className="w-full rounded-md bg-falcon-red px-6 py-3 font-semibold text-white transition-colors hover:bg-falcon-red-dark disabled:opacity-50"
+        className="w-full bg-falcon-red px-6 py-3 font-heading text-lg tracking-wider text-white transition-colors hover:bg-falcon-red-dark disabled:opacity-50"
       >
-        {status === "submitting" ? "Submitting..." : "Submit Entry"}
+        {status === "submitting" ? "SUBMITTING..." : "SUBMIT ENTRY"}
       </button>
     </form>
   );

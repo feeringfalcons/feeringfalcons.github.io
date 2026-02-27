@@ -12,7 +12,10 @@ export const CLUB = {
     fullAddress: "Elm Farm, Elm Lane, Marks Tey, CO6 1HU",
     mapQuery: "Elm+Farm,+Elm+Lane,+Marks+Tey,+CO6+1HU",
   },
-  league: "Colchester and District Youth League",
+  leagues: [
+    { name: "Colchester and District Youth League", shortName: "C&DYL" },
+    { name: "Blackwater and Dengie Youth Football League", shortName: "BDYFL", url: "https://bdyfl.org/" },
+  ],
   accreditation: "England Football Accredited Club",
   values: [
     { title: "Positivity First", description: "Play positive, win positive" },
@@ -30,20 +33,42 @@ export const CLUB = {
     facebook: "https://www.facebook.com/feeringfalconsfc",
     instagram: "https://www.instagram.com/feeringfalconsfc/",
   },
+  secondGround: {
+    name: "Feering Park",
+    note: "Used for 7-a-side games",
+  },
   contact: {
     sponsorship: "simonpreed@gmail.com",
+    chairman: "chairman@feeringfalcons.com",
+    secretary: "secretary@feeringfalcons.com",
+    treasurer: "treasurer@feeringfalcons.com",
+    childwelfare: "childwelfare@feeringfalcons.com",
   },
+  officers: {
+    chairman: { name: "D Scott", email: "chairman@feeringfalcons.com" },
+    secretary: { name: "P Jenkins", email: "secretary@feeringfalcons.com" },
+    treasurer: { name: "A Booth", email: "treasurer@feeringfalcons.com" },
+    childWelfare: { name: "I Hayhoe", email: "childwelfare@feeringfalcons.com" },
+  },
+  presentationNight: "Friday 5th June",
   teams: [
-    "Under 7",
-    "Under 8",
-    "Under 9",
-    "Under 10",
-    "Under 11",
-    "Under 12",
-    "Under 13",
-    "Under 14",
-    "Under 15",
-    "Under 16",
+    "Fledglings",
+    "U6",
+    "U7 Blues",
+    "U7 Reds",
+    "U8 Girls",
+    "U8 Blues",
+    "U8 Reds",
+    "U9 Blues",
+    "U9 Reds",
+    "U10 Blues",
+    "U10 Reds",
+    "U11 Blues",
+    "U11 Reds",
+    "U12 Blues",
+    "U12 Reds",
+    "U13",
+    "U14",
   ],
 } as const;
 
@@ -100,11 +125,42 @@ export const TOURNAMENT = {
 
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Teams", href: "/teams" },
   { label: "Tournament", href: "/tournament" },
-  { label: "Find Us", href: "/find-us" },
-  { label: "Safeguarding", href: "/safeguarding" },
-  { label: "Policies", href: "/policies" },
+  { label: "Club Info", href: "/club" },
   { label: "Sponsorship", href: "/sponsorship" },
-  { label: "Contact", href: "/contact" },
+] as const;
+
+export const POLICIES = [
+  {
+    title: "Club Constitution",
+    href: "/documents/constitution.pdf",
+  },
+  {
+    title: "Code of Conduct",
+    href: "/documents/code-of-conduct.pdf",
+  },
+  {
+    title: "Child Protection Policy",
+    href: "/documents/child-protection-policy.pdf",
+  },
+  {
+    title: "Complaints Procedure",
+    href: "/documents/complaints-procedure.pdf",
+  },
+  {
+    title: "Equality Policy",
+    href: "/documents/equality-policy.pdf",
+  },
+  {
+    title: "Data Protection Policy",
+    href: "/documents/feering-falcons-data-protection-policy.pdf",
+  },
+  {
+    title: "Privacy Notice",
+    href: "/documents/feering-falcons-privacy-notice.pdf",
+  },
+  {
+    title: "FA Whole Game System Privacy Policy",
+    href: "/documents/the-fa-whole-game-system-privacy-policy.pdf",
+  },
 ] as const;

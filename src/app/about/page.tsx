@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { JoinForm } from "@/components/ui/JoinForm";
 import { CLUB } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -12,157 +13,191 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <article>
-      {/* Page header */}
-      <section className="bg-falcon-grey py-12 sm:py-16">
+      {/* Opening — no red hero, straight into the story */}
+      <section className="pb-8 pt-16 sm:pt-24">
         <Container>
-          <h1 className="font-heading text-4xl font-bold text-falcon-charcoal sm:text-5xl">
-            About Us
-          </h1>
+          <ScrollReveal animation="animate-slide-in-left">
+            <p className="font-heading text-sm tracking-widest text-falcon-charcoal/30">
+              EST. {CLUB.founded}
+            </p>
+            <h1 className="mt-3 font-heading text-[clamp(3rem,9vw,7rem)] leading-[0.82] tracking-tight text-falcon-charcoal">
+              ABOUT
+              <br />
+              <span className="text-falcon-red">THE CLUB</span>
+            </h1>
+          </ScrollReveal>
         </Container>
       </section>
 
-      <Container className="py-12 sm:py-16">
-        <div className="mx-auto max-w-3xl space-y-12">
-          {/* Origin story */}
-          <section>
-            <h2 className="font-heading text-2xl font-bold text-falcon-charcoal">
-              Our Story
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-falcon-charcoal/80">
-              Born in the fields of Feering and Kelvedon, Feering Falcons Youth
-              Football Club has been developing young footballers since 1978.
-              What started as a small group of local kids with a love for the
-              game has grown into one of the most established grassroots clubs in
-              North Essex.
-            </p>
-            <p className="mt-4 leading-relaxed text-falcon-charcoal/80">
-              Our philosophy has always been simple: development over results,
-              confidence over competition, and a genuine love of the game above
-              all else. We believe that every child who pulls on a Feering
-              Falcons shirt should leave the pitch having had fun, learned
-              something, and felt part of a team.
-            </p>
-          </section>
+      {/* Origin story */}
+      <section className="pb-16 sm:pb-20">
+        <Container>
+          <ScrollReveal>
+            <div className="max-w-3xl">
+              <p className="text-xl leading-relaxed text-falcon-charcoal/80 sm:text-2xl">
+                Born in the fields of Feering and Kelvedon, Feering Falcons
+                Youth Football Club has been developing young footballers since
+                1978. What started as a small group of local kids with a love
+                for the game has grown into one of the most established
+                grassroots clubs in North Essex.
+              </p>
+              <p className="mt-6 leading-relaxed text-falcon-charcoal/70">
+                We play in the {CLUB.leagues[0].name} and the{" "}
+                <a href={CLUB.leagues[1].url} target="_blank" rel="noopener noreferrer" className="text-falcon-red hover:underline">{CLUB.leagues[1].name}</a>
+                , and are proud to be an{" "}
+                {CLUB.accreditation}. Our philosophy has always been simple:
+                development over results, confidence over competition, and a
+                genuine love of the game above all else.
+              </p>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
 
-          {/* Values */}
-          <section>
-            <h2 className="font-heading text-2xl font-bold text-falcon-charcoal">
-              What We Stand For
+      {/* Pull quote — full bleed red */}
+      <section className="bg-falcon-red py-16 sm:py-20">
+        <Container>
+          <ScrollReveal>
+            <p className="font-heading text-[clamp(2rem,5vw,4rem)] leading-[0.95] text-white">
+              DEVELOPMENT OVER RESULTS.
+              <br />
+              CONFIDENCE OVER COMPETITION.
+            </p>
+            <p className="mt-6 max-w-xl text-lg italic text-white/60">
+              We believe that every child who pulls on a Feering Falcons shirt
+              should leave the pitch having had fun, learned something, and
+              felt part of a team.
+            </p>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Teams — flowing text */}
+      <section id="teams" className="py-16 sm:py-20">
+        <Container>
+          <ScrollReveal>
+            <h2 className="font-heading text-3xl text-falcon-charcoal sm:text-4xl">
+              {CLUB.teams.length} TEAMS. ONE CLUB.
             </h2>
-            <div className="mt-6 space-y-4">
-              {CLUB.values.map((value) => (
-                <div
-                  key={value.title}
-                  className="border-l-4 border-falcon-red bg-falcon-grey px-5 py-4"
-                >
-                  <p className="font-heading text-lg font-bold text-falcon-charcoal">
-                    {value.title}
+            <div className="mt-8">
+              <p className="font-heading text-[clamp(1.4rem,3vw,2rem)] leading-relaxed tracking-wide text-falcon-charcoal/80">
+                {CLUB.teams.map((team, i) => (
+                  <span key={team}>
+                    <span className="text-falcon-charcoal">{team}</span>
+                    {i < CLUB.teams.length - 1 && (
+                      <span className="mx-2 text-falcon-red">/</span>
+                    )}
+                  </span>
+                ))}
+              </p>
+            </div>
+            <p className="mt-6 text-falcon-charcoal/60">
+              Playing across the {CLUB.leagues[0].shortName} and{" "}
+              <a href={CLUB.leagues[1].url} target="_blank" rel="noopener noreferrer" className="text-falcon-red hover:underline">{CLUB.leagues[1].shortName}</a>
+              . We also use{" "}
+              {CLUB.secondGround.name} for 7-a-side games.
+            </p>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Match days — charcoal, angular */}
+      <section className="section-angle-both bg-falcon-charcoal py-24 sm:py-32">
+        <Container>
+          <ScrollReveal>
+            <div className="max-w-3xl">
+              <h2 className="font-heading text-3xl text-white sm:text-4xl">
+                MATCH DAYS AT ELM FARM
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-white/80">
+                Our home ground at {CLUB.ground.name}, {CLUB.ground.postcode},
+                is the heart of the club. On match days you&apos;ll find
+                The Nest serving teas and bacon rolls, families
+                cheering from the sideline, and a real sense of community.
+              </p>
+              <p className="mt-4 leading-relaxed text-white/60">
+                All coaches are DBS-checked with FA qualifications. We take
+                safeguarding seriously — every child is looked after by trained,
+                dedicated volunteers who love the game.
+              </p>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Annual events */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <ScrollReveal>
+            <div className="max-w-3xl">
+              <h2 className="font-heading text-3xl text-falcon-charcoal sm:text-4xl">
+                ANNUAL EVENTS
+              </h2>
+              <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                <div className="border-l-4 border-falcon-red pl-6">
+                  <p className="font-heading text-xl text-falcon-charcoal">
+                    5-A-SIDE TOURNAMENT
                   </p>
-                  <p className="mt-1 text-falcon-charcoal/70">
-                    {value.description}
+                  <p className="mt-2 text-falcon-charcoal/60">
+                    Our flagship event each June, attracting over 100 teams from
+                    across the region.
                   </p>
                 </div>
-              ))}
-            </div>
-          </section>
-
-          {/* The club today */}
-          <section>
-            <h2 className="font-heading text-2xl font-bold text-falcon-charcoal">
-              The Club Today
-            </h2>
-            <p className="mt-4 leading-relaxed text-falcon-charcoal/80">
-              We run {CLUB.teams.length} teams across age groups from Under 7 to
-              Under 16, with over 200 young players registered with the club. We
-              play in the {CLUB.league} and are proud to be an{" "}
-              {CLUB.accreditation}.
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {[
-                { number: CLUB.teams.length, label: "Teams" },
-                { number: "200+", label: "Players" },
-                { number: "1978", label: "Founded" },
-                { number: "U7–U16", label: "Age Groups" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-falcon-grey px-4 py-5 text-center"
-                >
-                  <p className="font-heading text-2xl font-bold text-falcon-red">
-                    {stat.number}
+                <div className="border-l-2 border-falcon-border pl-6">
+                  <p className="font-heading text-xl text-falcon-charcoal">
+                    PRESENTATION NIGHT
                   </p>
-                  <p className="mt-1 text-sm text-falcon-charcoal/60">
-                    {stat.label}
+                  <p className="mt-2 text-falcon-charcoal/60">
+                    {CLUB.presentationNight} — celebrating the season with
+                    awards, trophies, and recognition for every player.
                   </p>
                 </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Match days */}
-          <section>
-            <h2 className="font-heading text-2xl font-bold text-falcon-charcoal">
-              Match Days at Elm Farm
-            </h2>
-            <p className="mt-4 leading-relaxed text-falcon-charcoal/80">
-              Our home ground at {CLUB.ground.name}, {CLUB.ground.postcode}, is
-              the heart of the club. On match days you&apos;ll find Bob&apos;s
-              Bistro serving teas and bacon rolls, families cheering from the
-              sideline, and a real sense of community. It&apos;s what grassroots
-              football is all about.
-            </p>
-            <p className="mt-4 leading-relaxed text-falcon-charcoal/80">
-              All of our coaches are DBS-checked and hold FA coaching
-              qualifications. We take safeguarding seriously — every child in our
-              care is looked after by trained, dedicated volunteers who love the
-              game.
-            </p>
-          </section>
-
-          {/* Annual events */}
-          <section>
-            <h2 className="font-heading text-2xl font-bold text-falcon-charcoal">
-              Annual Events
-            </h2>
-            <div className="mt-6 space-y-4">
-              <div className="border-l-4 border-falcon-red bg-falcon-grey px-5 py-4">
-                <p className="font-heading text-lg font-bold text-falcon-charcoal">
-                  5-A-Side Tournament
-                </p>
-                <p className="mt-1 text-falcon-charcoal/70">
-                  Our flagship event each June, attracting over 100 teams from
-                  across the region.{" "}
-                  <Link
-                    href="/tournament"
-                    className="text-falcon-red hover:underline"
-                  >
-                    Find out more
-                  </Link>
-                </p>
-              </div>
-              <div className="border-l-4 border-falcon-red bg-falcon-grey px-5 py-4">
-                <p className="font-heading text-lg font-bold text-falcon-charcoal">
-                  Presentation Night
-                </p>
-                <p className="mt-1 text-falcon-charcoal/70">
-                  Celebrating the season&apos;s achievements with awards,
-                  trophies, and a chance for every player to be recognised.
-                </p>
               </div>
             </div>
-          </section>
+          </ScrollReveal>
+        </Container>
+      </section>
 
-          {/* Accreditation */}
-          <section className="border-t border-falcon-grey-mid pt-8 text-center">
-            <p className="font-heading text-lg font-bold text-falcon-charcoal">
-              {CLUB.accreditation}
-            </p>
-            <p className="mt-2 text-sm text-falcon-charcoal/60">
-              Meeting the highest standards in grassroots football
-            </p>
-          </section>
-        </div>
-      </Container>
+      {/* Join Us — red section, form */}
+      <section id="join" className="bg-falcon-red py-16 sm:py-20">
+        <Container>
+          <ScrollReveal>
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <h2 className="font-heading text-[clamp(2.5rem,6vw,4rem)] leading-[0.85] text-white">
+                  NEW PLAYERS
+                  <br />
+                  WELCOME
+                </h2>
+                <p className="mt-6 text-lg text-white/80">
+                  Whether your child is picking up a football for the first time
+                  or looking for a new club, we&apos;d love to hear from you.
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {[
+                    "Friendly environment for players and parents",
+                    "FA-qualified, DBS-checked coaches",
+                    "Trial sessions available",
+                    "Development first, enjoyment always",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-1.5 h-2.5 w-2.5 shrink-0 bg-white" />
+                      <span className="text-white/80">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-falcon-cream p-6 sm:p-8">
+                <p className="mb-6 font-heading text-xl text-falcon-charcoal">
+                  REGISTER INTEREST
+                </p>
+                <JoinForm />
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
     </article>
   );
 }
