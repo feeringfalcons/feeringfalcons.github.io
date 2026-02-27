@@ -207,21 +207,46 @@ export default function ClubInfoPage() {
               2025/26 Season
             </p>
             <div className="mt-6">
-              {POLICIES.map((policy) => (
-                <Link
-                  key={policy.title}
-                  href={policy.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between border-b border-falcon-border py-4 transition-colors hover:border-falcon-red"
-                >
-                  <span className="font-medium text-falcon-charcoal group-hover:text-falcon-red">
-                    {policy.title}
-                  </span>
-                  <span className="flex items-center gap-2 text-sm text-falcon-charcoal/30 group-hover:text-falcon-red">
-                    <span className="hidden sm:inline">PDF</span>
+              {POLICIES.map((policy) =>
+                policy.external ? (
+                  <Link
+                    key={policy.title}
+                    href={policy.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between border-b border-falcon-border py-4 transition-colors hover:border-falcon-red"
+                  >
+                    <span className="font-medium text-falcon-charcoal group-hover:text-falcon-red">
+                      {policy.title}
+                    </span>
+                    <span className="flex items-center gap-2 text-sm text-falcon-charcoal/30 group-hover:text-falcon-red">
+                      <span className="hidden sm:inline">PDF</span>
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
+                ) : (
+                  <Link
+                    key={policy.title}
+                    href={policy.href}
+                    className="group flex items-center justify-between border-b border-falcon-border py-4 transition-colors hover:border-falcon-red"
+                  >
+                    <span className="font-medium text-falcon-charcoal group-hover:text-falcon-red">
+                      {policy.title}
+                    </span>
                     <svg
-                      className="h-4 w-4"
+                      className="h-4 w-4 text-falcon-charcoal/30 group-hover:text-falcon-red"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -230,12 +255,12 @@ export default function ClubInfoPage() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </span>
-                </Link>
-              ))}
+                  </Link>
+                )
+              )}
             </div>
             <div className="mt-4">
               <a

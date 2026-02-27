@@ -134,33 +134,46 @@ export const POLICIES = [
   {
     title: "Club Constitution",
     href: "/documents/constitution.pdf",
+    external: true,
+  },
+  {
+    title: "FA Respect Code of Conduct",
+    href: "/club/policies/fa-respect-code",
+    external: false,
   },
   {
     title: "Code of Conduct",
-    href: "/documents/code-of-conduct.pdf",
+    href: "/club/policies/code-of-conduct",
+    external: false,
   },
   {
     title: "Child Protection Policy",
-    href: "/documents/child-protection-policy.pdf",
+    href: "/club/policies/child-protection",
+    external: false,
   },
   {
     title: "Complaints Procedure",
-    href: "/documents/complaints-procedure.pdf",
+    href: "/club/policies/complaints-procedure",
+    external: false,
   },
   {
     title: "Equality Policy",
-    href: "/documents/equality-policy.pdf",
+    href: "/club/policies/equality",
+    external: false,
   },
   {
     title: "Data Protection Policy",
-    href: "/documents/feering-falcons-data-protection-policy.pdf",
+    href: "/club/policies/data-protection",
+    external: false,
   },
   {
     title: "Privacy Notice",
-    href: "/documents/feering-falcons-privacy-notice.pdf",
+    href: "/club/policies/privacy-notice",
+    external: false,
   },
   {
     title: "FA Whole Game System Privacy Policy",
     href: "/documents/the-fa-whole-game-system-privacy-policy.pdf",
+    external: true,
   },
 ] as const;
