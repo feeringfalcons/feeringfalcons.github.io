@@ -88,7 +88,7 @@ export function EntryForm() {
       <input
         type="hidden"
         name="access_key"
-        value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "YOUR_ACCESS_KEY_HERE"}
+        value="4a19a4b4-1fa9-4631-a090-a1ad4db1f82a"
       />
       <input
         type="hidden"
