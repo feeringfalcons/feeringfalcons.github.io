@@ -54,7 +54,7 @@ export function ContactForm() {
       <input
         type="hidden"
         name="access_key"
-        value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "YOUR_ACCESS_KEY_HERE"}
+        value="1cd1f0ad-f61b-48da-8c5f-7b956493ad7f"
       />
       <input type="checkbox" name="botcheck" className="hidden" />
 
