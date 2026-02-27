@@ -42,7 +42,9 @@ export default function AboutPage() {
                 grassroots clubs in North Essex.
               </p>
               <p className="mt-6 leading-relaxed text-falcon-charcoal/70">
-                We play in the {CLUB.leagues[0].name} and the{" "}
+                We play in the{" "}
+                <a href={CLUB.leagues[0].url} target="_blank" rel="noopener noreferrer" className="text-falcon-red hover:underline">{CLUB.leagues[0].name}</a>
+                {" "}and the{" "}
                 <a href={CLUB.leagues[1].url} target="_blank" rel="noopener noreferrer" className="text-falcon-red hover:underline">{CLUB.leagues[1].name}</a>
                 , and are proud to be an{" "}
                 {CLUB.accreditation}. Our philosophy has always been simple:
@@ -92,7 +94,9 @@ export default function AboutPage() {
               </p>
             </div>
             <p className="mt-6 text-falcon-charcoal/60">
-              Playing across the {CLUB.leagues[0].shortName} and{" "}
+              Playing across the{" "}
+              <a href={CLUB.leagues[0].url} target="_blank" rel="noopener noreferrer" className="text-falcon-red hover:underline">{CLUB.leagues[0].shortName}</a>
+              {" "}and{" "}
               <a href={CLUB.leagues[1].url} target="_blank" rel="noopener noreferrer" className="text-falcon-red hover:underline">{CLUB.leagues[1].shortName}</a>
               . We also use{" "}
               {CLUB.secondGround.name} for 7-a-side games.

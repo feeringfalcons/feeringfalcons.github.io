@@ -13,7 +13,7 @@ export const CLUB = {
     mapQuery: "Elm+Farm,+Elm+Lane,+Marks+Tey,+CO6+1HU",
   },
   leagues: [
-    { name: "Colchester and District Youth League", shortName: "C&DYL" },
+    { name: "Colchester and District Youth League", shortName: "C&DYL", url: "https://cdyfl.co.uk/" },
     { name: "Blackwater and Dengie Youth Football League", shortName: "BDYFL", url: "https://bdyfl.org/" },
   ],
   accreditation: "England Football Accredited Club",
