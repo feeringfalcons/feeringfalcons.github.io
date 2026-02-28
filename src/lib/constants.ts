@@ -33,6 +33,7 @@ export const CLUB = {
     facebook: "https://www.facebook.com/feeringfalconsfc",
     instagram: "https://www.instagram.com/feeringfalconsfc/",
   },
+  shop: "https://feering-falcons-yfc.pendlesportswear.co.uk/",
   secondGround: {
     name: "Feering Park",
     note: "Used for 7-a-side games",

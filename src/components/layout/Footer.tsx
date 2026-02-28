@@ -40,6 +40,16 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href={CLUB.shop}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/70 transition-colors hover:text-falcon-red-light"
+                >
+                  Club Shop
+                </a>
+              </li>
             </ul>
           </div>
 

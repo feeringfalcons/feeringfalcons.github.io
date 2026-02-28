@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, CLUB } from "@/lib/constants";
 import { MobileNav } from "./MobileNav";
 
 export function Header() {
@@ -48,6 +48,14 @@ export function Header() {
               {link.label.toUpperCase()}
             </Link>
           ))}
+          <a
+            href={CLUB.shop}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link-underline font-heading text-sm tracking-wider text-falcon-charcoal/70 transition-colors hover:text-falcon-red"
+          >
+            SHOP
+          </a>
         </nav>
 
         <div className="flex items-center gap-4">

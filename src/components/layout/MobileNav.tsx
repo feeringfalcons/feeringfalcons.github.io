@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect } from "react";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, CLUB } from "@/lib/constants";
 
 export function MobileNav({
   open,
@@ -82,6 +82,15 @@ export function MobileNav({
               {link.label.toUpperCase()}
             </Link>
           ))}
+          <a
+            href={CLUB.shop}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="border-b border-falcon-border py-4 font-heading text-xl tracking-wider text-falcon-charcoal transition-colors hover:text-falcon-red"
+          >
+            SHOP
+          </a>
           <Link
             href="/about#join"
             onClick={onClose}
