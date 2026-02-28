@@ -69,7 +69,7 @@ export default function ClubInfoPage() {
               </div>
               <div className="overflow-hidden border-2 border-falcon-border lg:col-span-3">
                 <iframe
-                  src="https://maps.google.com/maps?q=51.873289,0.739454&t=k&z=17&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=51.871556,0.739028&t=k&z=17&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="400"
                   className="border-0"
