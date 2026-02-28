@@ -133,8 +133,8 @@ export const NAV_LINKS = [
 export const POLICIES = [
   {
     title: "Club Constitution",
-    href: "/documents/constitution.pdf",
-    external: true,
+    href: "/club/policies/constitution",
+    external: false,
   },
   {
     title: "FA Respect Code of Conduct",
