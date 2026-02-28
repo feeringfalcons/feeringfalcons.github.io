@@ -20,9 +20,9 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-falcon-red/50 via-transparent to-falcon-red/50" />
       </div>
 
-      {/* Content */}
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
-        <h1 className="font-heading text-[clamp(4rem,15vw,10rem)] leading-[0.82] tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.15)]">
+      {/* Content — staggered entrance */}
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8 stagger-children">
+        <h1 className="animate-fade-in-up font-heading text-[clamp(4rem,15vw,10rem)] leading-[0.82] tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.15)]">
           TAKE
           <br />
           FLIGHT
@@ -33,19 +33,19 @@ export function Hero() {
           alt="Feering Falcons Youth Football Club"
           width={180}
           height={180}
-          className="mt-8 h-36 w-auto sm:mt-10 sm:h-44"
+          className="animate-fade-in-up mt-8 h-36 w-auto sm:mt-10 sm:h-44"
           priority
         />
 
-        <p className="mt-8 max-w-md text-lg italic text-white/80 sm:text-xl">
+        <p className="animate-fade-in-up mt-8 max-w-md text-lg italic text-white/80 sm:text-xl">
           {CLUB.tagline}
         </p>
-        <p className="mt-3 text-sm text-white/50">
+        <p className="animate-fade-in-up mt-3 text-sm text-white/50">
           Est. {CLUB.founded} &middot; {CLUB.ground.address} &middot;{" "}
           {CLUB.accreditation}
         </p>
 
-        <div className="mt-8 flex gap-3">
+        <div className="animate-fade-in-up mt-8 flex gap-3">
           <Link
             href="/about#join"
             className="bg-falcon-charcoal px-8 py-3 font-heading text-lg tracking-wider text-white transition-colors hover:bg-falcon-charcoal-light"
