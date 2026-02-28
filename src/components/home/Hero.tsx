@@ -4,9 +4,25 @@ import { CLUB } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="section-angle bg-falcon-red pb-36 pt-16 sm:pb-44 sm:pt-24">
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
-        <h1 className="font-heading text-[clamp(4rem,15vw,10rem)] leading-[0.82] tracking-tight text-white">
+    <section className="section-angle relative overflow-hidden bg-falcon-red pb-36 pt-16 sm:pb-44 sm:pt-24">
+      {/* Kit image — behind content, faded into the red */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/player.png`}
+          alt=""
+          fill
+          className="object-cover object-[70%_center] opacity-30 sm:opacity-40 lg:opacity-50"
+          sizes="100vw"
+          priority
+        />
+        {/* Soft fade at edges only */}
+        <div className="absolute inset-0 bg-gradient-to-t from-falcon-red via-transparent to-falcon-red/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-falcon-red/50 via-transparent to-falcon-red/50" />
+      </div>
+
+      {/* Content */}
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+        <h1 className="font-heading text-[clamp(4rem,15vw,10rem)] leading-[0.82] tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.15)]">
           TAKE
           <br />
           FLIGHT
