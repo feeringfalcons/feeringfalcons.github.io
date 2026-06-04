@@ -182,7 +182,7 @@ export const PRESENTATION = {
         { time: "9:15pm", label: "Under 11 Reds", person: "Ian Whittle", type: "team" },
         { time: "9:25pm", label: "Break & Refreshments", type: "break" },
         { time: "9:35pm", label: "Under 12 Blues", person: "Tom Flint", type: "team" },
-        { time: "9:45pm", label: "Under 12 Reds", person: "Karl Rushen", type: "team" },
+        { time: "9:45pm", label: "Under 12 Raptors", person: "Karl Rushen", type: "team" },
         { time: "9:55pm", label: "Under 13", person: "Sam Gallagher", type: "team" },
         { time: "10:05pm", label: "Under 14", person: "Paul Nicholls", type: "team" },
         { time: "10:15pm", label: "Player's Player Awards", person: "All Teams", type: "awards" },
