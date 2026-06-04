@@ -136,8 +136,65 @@ export const TOURNAMENT = {
   },
 } as const;
 
+export const PRESENTATION = {
+  name: "Presentation Night 2026",
+  date: "Friday 5th June 2026",
+  dateISO: "2026-06-05",
+  venue: "Feering Village Hall",
+  intro:
+    "A chance for our players to celebrate their hard work and successes this season.",
+  info: [
+    "Drinks are sold in the bar, so please do not bring or drink your own alcohol. You are welcome to bring your own snacks.",
+    "Please be respectful to the managers who are speaking on stage and do not talk whilst they are presenting.",
+    "We are a growing club with lots of teams to get through. Our aim is to run to time so that the evening runs smoothly, so please support us by being ready promptly at the start of each session and after the break, with your child at the front with their team ready for their turn on stage.",
+    "The Player's Player Award for all teams will be given out at the end of each session.",
+  ],
+  sessions: [
+    {
+      title: "Session 1",
+      ages: "Under 7s to Under 9s",
+      doors: "6:00pm",
+      schedule: [
+        { time: "6:30pm", label: "Welcome from the Chairman", person: "Derek Scott", type: "welcome" },
+        { time: "6:45pm", label: "Under 7 Blues", person: "Ed Peters", type: "team" },
+        { time: "6:55pm", label: "Under 7 Reds", person: "Jay Francis", type: "team" },
+        { time: "7:05pm", label: "Under 8 Girls", person: "Mike Wood & Liz Herd", type: "team" },
+        { time: "7:15pm", label: "Break & Refreshments", type: "break" },
+        { time: "7:25pm", label: "Under 8 Blues", person: "Richard Shand", type: "team" },
+        { time: "7:35pm", label: "Under 8 Reds", person: "Ross Moran", type: "team" },
+        { time: "7:45pm", label: "Under 9 Blues", person: "Dan Garrett", type: "team" },
+        { time: "7:55pm", label: "Under 9 Reds", person: "Mike Pipe", type: "team" },
+        { time: "8:05pm", label: "Player's Player Awards", person: "All Teams", type: "awards" },
+        { time: "8:15pm", label: "Close", type: "close" },
+      ],
+    },
+    {
+      title: "Session 2",
+      ages: "Under 10s to Under 14s",
+      doors: "8:00pm",
+      doorsNote:
+        "Please use the small bar area to get yourselves a drink before the main hall is ready.",
+      schedule: [
+        { time: "8:30pm", label: "Welcome from the Chairman", person: "Derek Scott", type: "welcome" },
+        { time: "8:45pm", label: "Under 10 Blues", person: "Dan Midwinter", type: "team" },
+        { time: "8:55pm", label: "Under 10 Reds", person: "Adam Cutting", type: "team" },
+        { time: "9:05pm", label: "Under 11 Blues", person: "Michaela Bacon", type: "team" },
+        { time: "9:15pm", label: "Under 11 Reds", person: "Ian Whittle", type: "team" },
+        { time: "9:25pm", label: "Break & Refreshments", type: "break" },
+        { time: "9:35pm", label: "Under 12 Blues", person: "Tom Flint", type: "team" },
+        { time: "9:45pm", label: "Under 12 Reds", person: "Karl Rushen", type: "team" },
+        { time: "9:55pm", label: "Under 13", person: "Sam Gallagher", type: "team" },
+        { time: "10:05pm", label: "Under 14", person: "Paul Nicholls", type: "team" },
+        { time: "10:15pm", label: "Player's Player Awards", person: "All Teams", type: "awards" },
+        { time: "10:30pm", label: "Close", type: "close" },
+      ],
+    },
+  ],
+} as const;
+
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Presentation", href: "/presentation" },
   { label: "Tournament", href: "/tournament" },
   { label: "Club Info", href: "/club" },
   { label: "Sponsorship", href: "/sponsorship" },

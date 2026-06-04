@@ -26,6 +26,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {[
                 { label: "Join a Team", href: "/about#join" },
+                { label: "Presentation Night", href: "/presentation" },
                 { label: "Find Us", href: "/club#find-us" },
                 { label: "Tournament Entry", href: "/tournament#enter" },
                 { label: "Safeguarding", href: "/club#safeguarding" },
