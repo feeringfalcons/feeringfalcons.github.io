@@ -66,6 +66,35 @@ function InfoIcon({ name }: { name: string }) {
 
 const INFO_ICONS = ["drink", "speaker", "clock", "trophy"];
 
+function HallIcon({ kind }: { kind: "stage" | "chat" }) {
+  const common = {
+    className: "h-7 w-7",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.75,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    viewBox: "0 0 24 24",
+  };
+  if (kind === "stage") {
+    // person presenting at a board / on stage
+    return (
+      <svg {...common}>
+        <circle cx="8" cy="6.5" r="2.25" />
+        <path d="M8 11c-2.2 0-3.5 1.4-3.5 3.5V18M8 11v7" />
+        <path d="M13 5.5h7.5v8H14M13 5.5v10" />
+      </svg>
+    );
+  }
+  // two speech bubbles
+  return (
+    <svg {...common}>
+      <path d="M3.5 6.5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8l-3 2.5V12.5a2 2 0 0 1-1.5-2Z" />
+      <path d="M17 9.5h1.5a2 2 0 0 1 2 2v3a2 2 0 0 1-1.5 1.95V19l-2.5-2H13" />
+    </svg>
+  );
+}
+
 function SessionRunOrder({ session }: { session: Session }) {
   const doorsNote = "doorsNote" in session ? session.doorsNote : undefined;
 
@@ -218,6 +247,51 @@ export default function PresentationPage() {
                 </p>
               </div>
             ))}
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ── Two halls (the key message) ── */}
+      <section className="bg-falcon-red py-16 text-white sm:py-20">
+        <Container>
+          <ScrollReveal>
+            <p className="font-heading text-sm tracking-[0.25em] text-white/60">
+              {PRESENTATION.halls.eyebrow}
+            </p>
+            <h2 className="mt-2 font-heading text-[clamp(2rem,6vw,3.5rem)] leading-[0.9]">
+              {PRESENTATION.halls.heading}
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
+              {PRESENTATION.halls.intro}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal className="stagger-children mt-10 grid gap-5 sm:grid-cols-2">
+            {PRESENTATION.halls.rooms.map((room, i) => (
+              <div
+                key={room.name}
+                className="animate-fade-in-up flex flex-col bg-white p-6 text-falcon-charcoal shadow-sm shadow-black/20 sm:p-8"
+              >
+                <span className="flex items-center gap-3 text-falcon-red">
+                  <HallIcon kind={i === 0 ? "stage" : "chat"} />
+                  <span className="font-heading text-sm tracking-[0.2em]">
+                    {room.tag}
+                  </span>
+                </span>
+                <p className="mt-4 font-heading text-3xl leading-none text-falcon-charcoal sm:text-4xl">
+                  {room.name}
+                </p>
+                <p className="mt-4 leading-relaxed text-falcon-charcoal/75">
+                  {room.desc}
+                </p>
+              </div>
+            ))}
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <p className="mt-10 border-t border-white/25 pt-8 font-heading text-[clamp(1.5rem,4vw,2.75rem)] leading-tight tracking-wide">
+              {PRESENTATION.halls.punchline}
+            </p>
           </ScrollReveal>
         </Container>
       </section>

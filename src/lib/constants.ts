@@ -143,9 +143,28 @@ export const PRESENTATION = {
   venue: "Feering Village Hall",
   intro:
     "A chance for our players to celebrate their hard work and successes this season.",
+  halls: {
+    eyebrow: "NEW FOR THIS YEAR",
+    heading: "TWO HALLS, YOUR CHOICE",
+    intro:
+      "We've changed things this year. We are no longer asking everyone to sit in silence in the main hall, so we have set aside a separate room for catching up. Pick whichever suits you on the night, and feel free to move between the two.",
+    punchline: "Want to watch? Main hall. Want to chat? Small hall.",
+    rooms: [
+      {
+        tag: "FOR THE PRESENTATIONS",
+        name: "Main Hall",
+        desc: "This is where it all happens. If you are here to watch the teams go up on stage, please keep it quiet and respectful while the managers are speaking, so everyone can hear and every child gets their moment.",
+      },
+      {
+        tag: "FOR CHATTING AND CATCHING UP",
+        name: "Small Hall",
+        desc: "Here to see friends and have a catch up? The small hall (the bar area) is open all evening for exactly that. Grab a drink, have a natter, and there is no need to keep your voice down.",
+      },
+    ],
+  },
   info: [
     "Drinks are sold in the bar, so please do not bring or drink your own alcohol. You are welcome to bring your own snacks.",
-    "Please be respectful to the managers who are speaking on stage and do not talk whilst they are presenting.",
+    "In the main hall, please keep the noise down while managers are presenting so everyone can hear. If you would rather chat, that is exactly what the small hall is for this year.",
     "We are a growing club with lots of teams to get through. Our aim is to run to time so that the evening runs smoothly, so please support us by being ready promptly at the start of each session and after the break, with your child at the front with their team ready for their turn on stage.",
     "The Player's Player Award for all teams will be given out at the end of each session.",
   ],
