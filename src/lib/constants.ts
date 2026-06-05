@@ -136,6 +136,8 @@ export const TOURNAMENT = {
   },
 } as const;
 
+// Retained for reuse next year. The /presentation page and its site links were
+// removed after the 2026 event; update the details below and re-add the page to revive it.
 export const PRESENTATION = {
   name: "Presentation Night 2026",
   date: "Friday 5th June 2026",
@@ -213,7 +215,6 @@ export const PRESENTATION = {
 
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Presentation", href: "/presentation" },
   { label: "Tournament", href: "/tournament" },
   { label: "Club Info", href: "/club" },
   { label: "Sponsorship", href: "/sponsorship" },
