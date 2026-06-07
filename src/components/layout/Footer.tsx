@@ -27,7 +27,7 @@ export function Footer() {
               {[
                 { label: "Join a Team", href: "/about#join" },
                 { label: "Find Us", href: "/club#find-us" },
-                { label: "Tournament Entry", href: "/tournament#enter" },
+                { label: "Tournament Info", href: "/tournament" },
                 { label: "Safeguarding", href: "/club#safeguarding" },
                 { label: "Sponsorship", href: "/sponsorship" },
               ].map((link) => (

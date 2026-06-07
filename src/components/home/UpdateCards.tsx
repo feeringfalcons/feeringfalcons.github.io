@@ -18,14 +18,15 @@ export function UpdateCards() {
               TOURNAMENT
             </h2>
             <p className="mt-4 max-w-lg text-lg text-white/60">
-              Saturday 13th June 2026. Teams from across the region at Elm Farm.
-              U7 through U15, £50 per team.
+              Saturday 13th June 2026. Teams from across the region at Elm Farm,
+              U7 through U15. Registration times, what to bring and the full
+              rules are all online.
             </p>
             <Link
               href="/tournament"
               className="mt-8 inline-block bg-falcon-red px-8 py-3 font-heading text-lg tracking-wider text-white transition-colors hover:bg-falcon-red-dark"
             >
-              ENTER NOW &rarr;
+              INFO &amp; RULES &rarr;
             </Link>
           </ScrollReveal>
         </div>

@@ -119,6 +119,62 @@ export const TOURNAMENT = {
       max: 7,
     },
   },
+  // Registration is split across two sessions by age group (2026 information letter).
+  registration: {
+    am: {
+      label: "Morning session",
+      registerBy: "9:00am",
+      kickOff: "9:30am",
+      ageGroups: ["Under 7", "Under 10", "Under 12", "Under 15"],
+    },
+    pm: {
+      label: "Afternoon session",
+      registerBy: "1:15pm",
+      kickOff: "approx 1:45pm",
+      ageGroups: [
+        "Under 8",
+        "Under 8 Girls",
+        "Under 9",
+        "Under 11",
+        "Under 13",
+        "Under 14",
+      ],
+    },
+  },
+  onTheDay: ["BBQ", "Drinks", "Cakes"],
+  infoDocument: "/documents/feering-falcons-5aside-information-2026.pdf",
+  directions: [
+    {
+      from: "From Colchester",
+      steps: [
+        "Leave the A12 at Junction 25 (Marks Tey) and join the A120 (signposted Stansted, Bishops Stortford).",
+        "Continue along the A120, passing Poplar Nurseries Garden Centre on your left.",
+        "In approx 0.5 miles turn left into Elm Lane.",
+        "Continue along Elm Lane for approx 0.5 miles.",
+        "Turn right into Elm Farm at the two 'Public Footpath' signs.",
+      ],
+    },
+    {
+      from: "From Braintree",
+      steps: [
+        "Join the A120 at Marks Farm Roundabout, heading towards Colchester.",
+        "Continue along the A120 using the Coggeshall Bypass.",
+        "Ignore the signs for Feering & Kelvedon, stay on the A120, passing the Kings Head pub on your left.",
+        "Just after the Kings Head the ground should be visible on your right from the A120. Turn right into Elm Lane.",
+        "Continue along Elm Lane for approx 0.5 miles, then turn into Elm Farm at the two 'Public Footpath' signs.",
+      ],
+    },
+    {
+      from: "From Chelmsford",
+      steps: [
+        "Take the A12 towards Colchester, leaving at Junction 23 (Kelvedon).",
+        "Continue through Kelvedon and enter Feering by the Railway Tavern pub.",
+        "Passing the Blue Anchor on your right, turn left into Coggeshall Road (opposite the former Police Station).",
+        "Continue along Coggeshall Road, past the Community Centre and under the railway bridge. In approx 100 yards turn right, passing the Bell pub on your left.",
+        "Continue forward for approx 1.5 miles (the road is quite narrow). Elm Farm is on your left at the two 'Public Footpath' signs.",
+      ],
+    },
+  ],
   payment: {
     bankName: "Feering Falcons Youth Football Club",
     sortCode: "30-98-90",
@@ -130,10 +186,95 @@ export const TOURNAMENT = {
     name: "Andrew Booth",
     email: "feeringfalcons5aside@btinternet.com",
     phone: "07768 005378",
-    phoneHours: "between 7pm – 8.30pm",
+    phoneHours: "between 7pm and 8.30pm",
     address:
       "The Hollies, Orchard Road, Kelvedon, Colchester, Essex, CO5 9NA",
   },
+} as const;
+
+// Official tournament rules, transcribed from the 2026 information letter / rules sheet.
+export const TOURNAMENT_RULES = {
+  squads: [
+    {
+      groups: "Under 7s and Under 8s",
+      detail:
+        "A squad of up to 8 players. Each team is 5 players (one a goalkeeper), with 3 substitutes who may come on at any time.",
+    },
+    {
+      groups: "Under 9s to Under 15s",
+      detail:
+        "A squad of up to 7 players. Each team is 5 players (one a goalkeeper), with 2 substitutes who may come on at any time.",
+    },
+  ],
+  players: [
+    "All players' names must be on the registration form, handed in to the organisers on arrival.",
+    "A player may not play for more than one team in the tournament. If they do, every team they played for takes no further part in the competition.",
+  ],
+  format:
+    "The format for each age group may vary depending on the number of teams entered. The aim is always to give every age group the maximum number of games possible.",
+  duration: [
+    { round: "Preliminary rounds", length: "5 minutes each way" },
+    { round: "Quarter-finals", length: "5 minutes each way" },
+    { round: "Semi-finals", length: "6 minutes each way" },
+    { round: "Finals", length: "7 minutes each way" },
+  ],
+  durationNote:
+    "In the knockout stages, if scores are level at full time, extra time of 2 minutes each way is played. If still level, all players on the field (including the goalkeeper) take penalties, then sudden death if needed.",
+  ball: [
+    "The first-named team in each game supplies the match ball.",
+    "Size 3 for Under 7, 8, 9 and 10. Size 4 for Under 11, 12, 13 and 14. Size 5 for Under 15.",
+  ],
+  footwear:
+    "All players should bring both football boots and trainers. In wet weather it is football boots only; in dry weather it is your own choice of boots or trainers.",
+  shinguards:
+    "Every player MUST wear shinguards. All jewellery and watches must be removed.",
+  points: [
+    "Three points for a win, one point for a draw.",
+    "If teams are level on points, position is decided on goal difference, then goals scored.",
+    "If still level, a play-off is arranged, with extra time and penalties if necessary.",
+    "Any team failing to turn up for a match may, at the organisers' discretion, forfeit it 3-0.",
+  ],
+  discipline: [
+    "A player who is dismissed, or who receives 2 bookings during the tournament, takes no further part in the competition.",
+    "The organisers may exclude any team or club for bad sportsmanship, foul or abusive language, or violent conduct by players, managers, parents or spectators.",
+    "All disciplinary matters are reported to the Essex County Football Association.",
+  ],
+  playYounger: {
+    title: "Under 7 to Under 10",
+    intro:
+      "Normal C&DYL Mini-Soccer rules apply. For the avoidance of doubt, please note the following:",
+    rules: [
+      "Each half starts with a kick-off, and play restarts with a kick-off after a goal. All players retreat to their own half.",
+      "Kick-ins or dribble-ins follow C&DYL rules. A goal can be scored from one provided the player has taken a touch first, and they may go straight to the goalkeeper.",
+      "Corners are taken and goals can be scored direct from a corner.",
+      "Goal kicks can be taken from anywhere in the goalkeeper's area; opponents retreat to their own half until the ball is in play.",
+      "The goalkeeper may put the ball into play by throwing (over or under arm) or kicking. A back-pass is allowed, but the keeper must play it with their feet (normal back-pass rule).",
+      "All players are allowed in the goalkeeper's area, and the goalkeeper is allowed out of it.",
+      "There is no offside, and the ball does not need to stay below the referee's head height.",
+      "All free kicks are direct, except for deliberate headers or a keeper picking up a deliberate back-pass / throw-in from a teammate (indirect). Opponents stay at least 5 yards from the ball.",
+      "Substitutions may be made at any time with the referee's permission.",
+    ],
+  },
+  playOlder: {
+    title: "Under 11 to Under 15",
+    intro: "Please note the following:",
+    rules: [
+      "Each half starts with a kick-off, and play restarts with a kick-off after a goal. All players retreat to their own half.",
+      "Throw-ins are taken underarm. A goal cannot be scored direct from a throw-in, but it can go straight to the goalkeeper.",
+      "Corners are taken and goals can be scored direct from a corner.",
+      "The goalkeeper may only restart play with an underarm throw. An overarm throw or a kick gives a free kick 2 metres from where the ball left the semi-circle.",
+      "Only the goalkeeper is allowed in the goalkeeper's area and may not leave it. A defender entering the area concedes a penalty; an attacker entering it concedes a free kick to the defending team.",
+      "A player receiving the ball from their keeper cannot return it until another player has touched it. A pass-back straight to the keeper gives a free kick.",
+      "There is no offside, and sliding tackles are not permitted.",
+      "The ball must stay below the referee's head height (except rebounds off a save, post or crossbar). Otherwise a free kick is given against the last player to touch it.",
+      "All free kicks are direct, with opponents at least 2 metres from the ball. Substitutions may be made at any time with the referee's permission.",
+    ],
+  },
+  referees: [
+    "The referees are the sole judges of time for all games. Separate timekeepers are not allowed.",
+    "The referee's decision is final in all games.",
+    "Any other disputes are settled by the tournament organisers, whose decision is final.",
+  ],
 } as const;
 
 // Retained for reuse next year. The /presentation page and its site links were
