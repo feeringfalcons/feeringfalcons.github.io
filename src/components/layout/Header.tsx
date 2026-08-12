@@ -61,7 +61,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/about#join"
-            className="bg-falcon-red px-5 py-2 font-heading text-sm tracking-wider text-white transition-colors hover:bg-falcon-red-dark"
+            className="flex min-h-11 items-center bg-falcon-red px-5 font-heading text-sm tracking-wider text-white transition-colors hover:bg-falcon-red-dark"
           >
             JOIN US
           </Link>

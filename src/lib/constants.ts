@@ -1,3 +1,65 @@
+/**
+ * Every team in the club, and where (if anywhere) its fixtures are published.
+ *
+ * `source` is the FA Full-Time feed a team's fixtures arrive in:
+ *   "bdyfl" / "cdyl" — a league we have a feed for
+ *   "none"           — the team exists but no feed covers it, which is either
+ *                      a league we have no code for, or a group that doesn't
+ *                      play published league football at all
+ *
+ * `age` and `variant` are what fixtures are matched on, rather than the full
+ * Full-Time string. Full-Time writes "Feering Falcons Y U11 Blues" today but
+ * the prefix varies between leagues and seasons, so matching on the age number
+ * and colour survives that. Matching on the whole string would break silently,
+ * and substring matching would make "U1" match "U11".
+ */
+export type ClubTeamSource = "bdyfl" | "cdyl" | "none";
+
+export type ClubTeam = {
+  id: string;
+  label: string;
+  age: number | null;
+  variant: string | null;
+  source: ClubTeamSource;
+  /** Shown when source is "none" — says why, rather than implying no games. */
+  unavailableNote?: string;
+};
+
+export const TEAMS: ClubTeam[] = [
+  {
+    id: "fledglings",
+    label: "Fledglings",
+    age: null,
+    variant: null,
+    source: "none",
+    unavailableNote:
+      "Fledglings is our pre-school group and doesn't play league fixtures. Session details come from the team.",
+  },
+  { id: "u7-blues", label: "U7 Blues", age: 7, variant: "blues", source: "bdyfl" },
+  { id: "u7-reds", label: "U7 Reds", age: 7, variant: "reds", source: "bdyfl" },
+  {
+    id: "u8-girls",
+    label: "U8 Girls",
+    age: 8,
+    variant: "girls",
+    source: "none",
+    unavailableNote:
+      "U8 Girls play in the Essex County FA Girls League, which isn't published on this site yet. Check with the team for fixtures.",
+  },
+  { id: "u8-blues", label: "U8 Blues", age: 8, variant: "blues", source: "bdyfl" },
+  { id: "u8-reds", label: "U8 Reds", age: 8, variant: "reds", source: "bdyfl" },
+  { id: "u9-blues", label: "U9 Blues", age: 9, variant: "blues", source: "cdyl" },
+  { id: "u9-reds", label: "U9 Reds", age: 9, variant: "reds", source: "cdyl" },
+  { id: "u10-blues", label: "U10 Blues", age: 10, variant: "blues", source: "bdyfl" },
+  { id: "u10-reds", label: "U10 Reds", age: 10, variant: "reds", source: "cdyl" },
+  { id: "u11-blues", label: "U11 Blues", age: 11, variant: "blues", source: "bdyfl" },
+  { id: "u11-reds", label: "U11 Reds", age: 11, variant: "reds", source: "bdyfl" },
+  { id: "u12-blues", label: "U12 Blues", age: 12, variant: "blues", source: "cdyl" },
+  { id: "u12-reds", label: "U12 Reds", age: 12, variant: "reds", source: "bdyfl" },
+  { id: "u13-blues", label: "U13 Blues", age: 13, variant: "blues", source: "bdyfl" },
+  { id: "u13-raptors", label: "U13 Raptors", age: 13, variant: "raptors", source: "bdyfl" },
+];
+
 export const CLUB = {
   name: "Feering Falcons Youth Football Club",
   shortName: "Feering Falcons",
@@ -47,10 +109,11 @@ export const CLUB = {
     // message and fills in on its own once the league uploads.
     // Still missing: U8 Girls, who play in the Essex County FA Girls League
     // and would need a third code from that league's Full-Time.
-    snippets: [
-      { label: "Blackwater & Dengie", code: "549852193" },
-      { label: "Colchester & District", code: "869357799" },
-    ] as { label: string; code: string }[],
+    // Keyed by ClubTeamSource so a team resolves straight to its feed.
+    feeds: {
+      bdyfl: { label: "Blackwater & Dengie", code: "549852193" },
+      cdyl: { label: "Colchester & District", code: "869357799" },
+    } as const,
     publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
   },
   values: [
@@ -91,25 +154,8 @@ export const CLUB = {
   // after the event and the site ends up advertising something that's already
   // happened — put the year's actual date back only while it's upcoming.
   presentationNight: "Held each June",
-  // 2026/27 season — from the club's Team / League List.
-  teams: [
-    "Fledglings",
-    "U7 Blues",
-    "U7 Reds",
-    "U8 Girls",
-    "U8 Blues",
-    "U8 Reds",
-    "U9 Blues",
-    "U9 Reds",
-    "U10 Blues",
-    "U10 Reds",
-    "U11 Blues",
-    "U11 Reds",
-    "U12 Blues",
-    "U12 Reds",
-    "U13 Blues",
-    "U13 Raptors",
-  ],
+  // Derived from TEAMS so the two can never drift apart.
+  teams: TEAMS.map((t) => t.label),
   joinAgeGroups: [
     "Fledglings",
     "Under 7",
@@ -407,6 +453,7 @@ export const PRESENTATION = {
 
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Fixtures", href: "/fixtures" },
   { label: "Tournament", href: "/tournament" },
   { label: "Club Info", href: "/club" },
   { label: "Sponsorship", href: "/sponsorship" },
