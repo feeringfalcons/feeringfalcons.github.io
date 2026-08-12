@@ -153,7 +153,8 @@ export default function AboutPage() {
                   </p>
                   <p className="mt-2 text-falcon-charcoal/60">
                     {CLUB.presentationNight} -celebrating the season with
-                    awards, trophies, and recognition for every player.
+                    awards, trophies, and recognition for every player, across
+                    both halls.
                   </p>
                 </div>
               </div>

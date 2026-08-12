@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CLUB } from "@/lib/constants";
+import { CLUB, TOURNAMENT } from "@/lib/constants";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function UpdateCards() {
@@ -10,7 +10,7 @@ export function UpdateCards() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="font-heading text-sm tracking-widest text-white/70">
-              COMING UP
+              BACK IN {TOURNAMENT.nextYear}
             </p>
             <h2 className="mt-3 font-heading text-[clamp(2.5rem,7vw,5rem)] leading-[0.85] text-white">
               5-A-SIDE
@@ -18,15 +18,15 @@ export function UpdateCards() {
               TOURNAMENT
             </h2>
             <p className="mt-4 max-w-lg text-lg text-white/60">
-              Saturday 13th June 2026. Teams from across the region at Elm Farm,
-              U7 through U15. Registration times, what to bring and the full
-              rules are all online.
+              Over 100 teams at Elm Farm every June, U7 through U15. The{" "}
+              {TOURNAMENT.lastHeld.year} tournament has been and gone — the{" "}
+              {TOURNAMENT.nextYear} date is still to be confirmed.
             </p>
             <Link
               href="/tournament"
               className="mt-8 inline-block bg-falcon-red px-8 py-3 font-heading text-lg tracking-wider text-white transition-colors hover:bg-falcon-red-dark"
             >
-              INFO &amp; RULES &rarr;
+              ABOUT THE TOURNAMENT &rarr;
             </Link>
           </ScrollReveal>
         </div>

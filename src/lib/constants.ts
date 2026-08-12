@@ -87,7 +87,10 @@ export const CLUB = {
     treasurer: { name: "A Booth", email: "treasurer@feeringfalcons.com" },
     childWelfare: { name: "I Hayhoe", email: "childwelfare@feeringfalcons.com" },
   },
-  presentationNight: "Friday 5th June",
+  // Kept deliberately evergreen. A hardcoded date silently goes stale the day
+  // after the event and the site ends up advertising something that's already
+  // happened — put the year's actual date back only while it's upcoming.
+  presentationNight: "Held each June",
   // 2026/27 season — from the club's Team / League List.
   teams: [
     "Fledglings",
@@ -121,6 +124,20 @@ export const CLUB = {
 
 export const TOURNAMENT = {
   name: "Feering Falcons 5-A-Side Tournament",
+
+  // Where we are in the cycle. The 2026 event is done, the 2027 date isn't set
+  // and entries are not open, so /tournament runs as a holding page.
+  //   "announced" -> date known, entries open (restore the entry form)
+  //   "imminent"  -> entries closed, day info live (registration times, rules)
+  //   "between"   -> event passed, next date not yet set  <-- current
+  status: "between" as "announced" | "imminent" | "between",
+  nextYear: 2027,
+  lastHeld: {
+    date: "Saturday 13th June 2026",
+    year: 2026,
+    monthHint: "June",
+  },
+
   date: "Saturday 13th June 2026",
   dateISO: "2026-06-13",
   venue: "Elm Farm Football Ground, Elm Lane, Nr Feering, Essex",
