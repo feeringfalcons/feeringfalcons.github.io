@@ -47,7 +47,9 @@ export function Fixtures() {
 
         {snippets.length > 0 ? (
           <div
-            className={`mt-8 grid gap-8 ${
+            // items-start so a league that hasn't published yet shrinks to its
+            // message instead of stretching to match a full neighbour.
+            className={`mt-8 grid items-start gap-8 ${
               snippets.length > 1 ? "lg:grid-cols-2" : ""
             }`}
           >

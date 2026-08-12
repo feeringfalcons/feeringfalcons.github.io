@@ -32,7 +32,9 @@ export function FullTimeSnippet({
   fallbackUrl: string;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<"loading" | "ready" | "failed">("loading");
+  const [state, setState] = useState<
+    "loading" | "ready" | "empty" | "failed"
+  >("loading");
   // A club-wide feed can run to a hundred rows, which would swamp the
   // homepage. Collapse to a readable window and let people open it out.
   const [expanded, setExpanded] = useState(false);
@@ -98,6 +100,19 @@ export function FullTimeSnippet({
     const observer = new MutationObserver(() => {
       if (target.childElementCount > 0) {
         clean();
+
+        // A league that hasn't published yet still returns a table — just one
+        // saying "No Schedule". Treat that as empty rather than rendering a
+        // stray header row that looks like a broken feed.
+        const fixtureRows = [...target.querySelectorAll("tr")].filter(
+          (r) => r.querySelectorAll("td").length >= 4,
+        ).length;
+        if (fixtureRows === 0) {
+          target.replaceChildren();
+          setState("empty");
+          return;
+        }
+
         setState("ready");
         // The cap itself lives in CSS (.ft-collapsed) so it can differ by
         // breakpoint, so measure the host rather than compare to a constant.
@@ -172,6 +187,19 @@ export function FullTimeSnippet({
           <p className="py-6 text-center text-sm text-falcon-charcoal/70">
             Loading from FA Full-Time&hellip;
           </p>
+        )}
+
+        {state === "empty" && (
+          <div className="py-8 text-center">
+            <p className="font-heading text-lg tracking-wide text-falcon-charcoal">
+              NOT PUBLISHED YET
+            </p>
+            <p className="mx-auto mt-2 max-w-xs text-sm text-falcon-charcoal/70">
+              The league hasn&apos;t released these fixtures yet. They usually
+              go up shortly before the season starts — this page will show them
+              as soon as they do.
+            </p>
+          </div>
         )}
 
         {state === "failed" && (

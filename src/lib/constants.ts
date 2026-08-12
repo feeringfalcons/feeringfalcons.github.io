@@ -42,8 +42,14 @@ export const CLUB = {
   //   "307148219" — C&DYL U13 A Division table, from the league's public
   //     site. Handy for testing styling without club credentials.
   fullTime: {
+    // One snippet per league — Falcons teams span both. C&DYL is typically
+    // late publishing; until it does, that panel shows a "not published yet"
+    // message and fills in on its own once the league uploads.
+    // Still missing: U8 Girls, who play in the Essex County FA Girls League
+    // and would need a third code from that league's Full-Time.
     snippets: [
-      { label: "Upcoming fixtures", code: "549852193" },
+      { label: "Blackwater & Dengie", code: "549852193" },
+      { label: "Colchester & District", code: "869357799" },
     ] as { label: string; code: string }[],
     publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
   },
