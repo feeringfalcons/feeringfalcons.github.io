@@ -70,6 +70,15 @@ export function FullTimeSnippet({
         }
       });
 
+      // Both leagues use 06:00 as the "kick-off not set yet" placeholder —
+      // times aren't published until the Sunday before. Showing 06:00 reads as
+      // a real 6am kick-off, so say what it actually means.
+      target.querySelectorAll("td[colspan]").forEach((el) => {
+        if (el.textContent && /\b06:00\b/.test(el.textContent)) {
+          el.textContent = el.textContent.replace(/\b06:00\b/g, "KICK-OFF TBC");
+        }
+      });
+
       // Pick our own club out of the list — the point of putting a league feed
       // on a club site is finding your team at a glance. Only the home/away
       // cells, not the venue column, which is often named after a Falcons
@@ -86,13 +95,15 @@ export function FullTimeSnippet({
       });
     }
 
-    const COLLAPSED_MAX_PX = 560;
-
     const observer = new MutationObserver(() => {
       if (target.childElementCount > 0) {
         clean();
         setState("ready");
-        setOverflows(target.scrollHeight > COLLAPSED_MAX_PX);
+        // The cap itself lives in CSS (.ft-collapsed) so it can differ by
+        // breakpoint, so measure the host rather than compare to a constant.
+        requestAnimationFrame(() => {
+          setOverflows(host.scrollHeight > host.clientHeight + 4);
+        });
       }
     });
     observer.observe(target, { childList: true, subtree: true });
@@ -135,12 +146,9 @@ export function FullTimeSnippet({
         <div className="relative">
           <div
             ref={hostRef}
-            className="ft-snippet overflow-x-auto"
-            style={
-              overflows && !expanded
-                ? { maxHeight: "560px", overflowY: "hidden" }
-                : undefined
-            }
+            className={`ft-snippet overflow-x-auto ${
+              expanded ? "ft-expanded" : "ft-collapsed"
+            }`}
           />
           {overflows && !expanded && (
             <div

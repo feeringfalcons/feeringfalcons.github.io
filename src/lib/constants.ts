@@ -38,7 +38,7 @@ export const CLUB = {
   // own public site): code "307148219" — useful for checking the styling.
   fullTime: {
     snippets: [
-      { label: "Upcoming fixtures", code: "320717005" },
+      { label: "Upcoming fixtures", code: "549852193" },
     ] as { label: string; code: string }[],
     publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
   },

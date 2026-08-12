@@ -141,6 +141,29 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Collapsed height. Deliberately short on phones: the homepage has to get
+   people to the rest of the club, not hand the whole screen to one table.
+   Roughly 3 fixtures on mobile, 7 on desktop, then "show all". */
+.ft-collapsed {
+  max-height: 17rem;
+  overflow-y: hidden;
+}
+
+@media (min-width: 640px) {
+  .ft-collapsed {
+    max-height: 35rem;
+  }
+}
+
+/* Expanded, a 155-fixture club feed is over 12,000px tall, which would strand
+   the collapse control far below the fold. Cap it and scroll inside instead;
+   overscroll-behavior stops the page running away underneath it. */
+.ft-expanded {
+  max-height: 70vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 .ft-snippet tr:last-child td {
   border-bottom: 0;
 }
