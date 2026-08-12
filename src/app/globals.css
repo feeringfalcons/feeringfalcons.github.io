@@ -79,6 +79,57 @@ h1, h2, h3, h4, h5, h6 {
   animation: slide-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* ── FA Full-Time feed ──
+   Full-Time injects a bare <table> into our DOM. FullTimeSnippet.tsx strips
+   its inline !important styling first, so these rules can take over and make
+   it read as part of the site rather than a 2009 embed. */
+
+.ft-snippet table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+}
+
+.ft-snippet tr:first-child td {
+  background: var(--color-falcon-charcoal);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ft-snippet td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--color-falcon-border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ft-snippet tr:nth-child(even) td {
+  background: var(--color-falcon-cream);
+}
+
+.ft-snippet tr:last-child td {
+  border-bottom: 0;
+}
+
+.ft-snippet a {
+  color: var(--color-falcon-red);
+  text-decoration: none;
+}
+
+.ft-snippet a:hover {
+  text-decoration: underline;
+}
+
+/* Our own club, called out in red wherever it appears in a table. */
+.ft-snippet td.is-falcons {
+  color: var(--color-falcon-red);
+  font-weight: 600;
+}
+
 /* ── Scroll reveal ──
    The hidden state is gated behind .js-reveal (set by an inline script before
    first paint) so that content stays visible if JS never runs. */

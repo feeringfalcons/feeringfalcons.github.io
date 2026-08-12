@@ -18,17 +18,27 @@ export const CLUB = {
   ],
   accreditation: "England Football Accredited Club",
   playerCount: "200+",
-  // FA Full-Time. Scraping this at build time is not possible — the site is
-  // behind Cloudflare bot management and returns 403 to anything that isn't a
-  // real browser — so the official embed is the supported route.
-  // To switch it on: league Full-Time admin → Publish/Website → copy the
-  // generated iframe src into embedUrl below.
-  // NB: one embed covers one league. Falcons teams span C&DYL *and* BDYFL, so
-  // you may want two, or link out to both.
+  // FA Full-Time feeds.
+  //
+  // There is no API and no iCal feed (the FA deferred .ics to Matchday), the
+  // robots.txt is `User-agent: * / Disallow: /`, and fixture data is injected
+  // client-side rather than server-rendered — so there is nothing to fetch at
+  // build time. The official code snippet is the supported route.
+  //
+  // To add a feed: log in at fulltime.thefa.com (team admin or higher) →
+  // Media → Code Snippets. Pick a type, division and season, then copy the
+  // number out of the generated `var lrcode = '...'` — that number is `code`
+  // below. Six types exist; "Club - Fixtures" and "Club - Results" cover every
+  // Falcons team in that league at once, so they are the two worth having.
+  //
+  // One snippet covers one league, and Falcons span C&DYL *and* BDYFL, so
+  // expect up to four codes for full coverage.
+  //
+  // Verified working example (C&DYL U13 A Division table, from the league's
+  // own public site): code "307148219" — useful for checking the styling.
   fullTime: {
-    embedUrl: "",
+    snippets: [] as { label: string; code: string }[],
     publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
-    height: 620,
   },
   values: [
     { title: "Positivity First", description: "Play positive, win positive" },
