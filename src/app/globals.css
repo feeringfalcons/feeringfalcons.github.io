@@ -117,25 +117,38 @@ h1, h2, h3, h4, h5, h6 {
   width: 0;
 }
 
-.ft-snippet td:nth-child(3) {
+.ft-snippet td:nth-child(3),
+.ft-snippet td:nth-child(3) a {
   width: 1.5rem;
   text-align: center;
-  color: var(--color-falcon-charcoal);
-  opacity: 0.45;
+  color: color-mix(in srgb, var(--color-falcon-charcoal) 45%, transparent);
   font-style: italic;
+  font-weight: 400;
 }
 
-.ft-snippet td:nth-child(5) {
+.ft-snippet td:nth-child(5),
+.ft-snippet td:nth-child(5) a {
   font-size: 0.8125rem;
-  color: color-mix(in srgb, var(--color-falcon-charcoal) 70%, transparent);
+  color: color-mix(in srgb, var(--color-falcon-charcoal) 65%, transparent);
+  font-weight: 400;
+}
+
+/* On a phone there isn't room for four columns of long youth-team names.
+   Venue is the least urgent — date, our team and the opponent matter most. */
+@media (max-width: 639px) {
+  .ft-snippet td:nth-child(5) {
+    display: none;
+  }
 }
 
 .ft-snippet tr:last-child td {
   border-bottom: 0;
 }
 
+/* Every team name is a link. Left red, the whole table turns red and the
+   club highlight below means nothing — so links inherit their cell colour. */
 .ft-snippet a {
-  color: var(--color-falcon-red);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -143,8 +156,9 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
 }
 
-/* Our own club, called out in red wherever it appears in a table. */
-.ft-snippet td.is-falcons {
+/* Our own club, called out wherever it appears in the home/away columns. */
+.ft-snippet td.is-falcons,
+.ft-snippet td.is-falcons a {
   color: var(--color-falcon-red);
   font-weight: 600;
 }

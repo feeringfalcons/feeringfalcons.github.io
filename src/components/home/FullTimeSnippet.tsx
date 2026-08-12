@@ -33,6 +33,10 @@ export function FullTimeSnippet({
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"loading" | "ready" | "failed">("loading");
+  // A club-wide feed can run to a hundred rows, which would swamp the
+  // homepage. Collapse to a readable window and let people open it out.
+  const [expanded, setExpanded] = useState(false);
+  const [overflows, setOverflows] = useState(false);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -57,6 +61,15 @@ export function FullTimeSnippet({
       });
       target.querySelectorAll("img").forEach((el) => el.remove());
 
+      // The leading competition cell is usually a bare &nbsp;, which means the
+      // CSS :empty rule never matches and it holds open a dead gutter. Blank
+      // it properly so the column can collapse.
+      target.querySelectorAll("td").forEach((el) => {
+        if (!(el.textContent ?? "").replace(/ /g, "").trim()) {
+          el.textContent = "";
+        }
+      });
+
       // Pick our own club out of the list — the point of putting a league feed
       // on a club site is finding your team at a glance. Only the home/away
       // cells, not the venue column, which is often named after a Falcons
@@ -73,10 +86,13 @@ export function FullTimeSnippet({
       });
     }
 
+    const COLLAPSED_MAX_PX = 560;
+
     const observer = new MutationObserver(() => {
       if (target.childElementCount > 0) {
         clean();
         setState("ready");
+        setOverflows(target.scrollHeight > COLLAPSED_MAX_PX);
       }
     });
     observer.observe(target, { childList: true, subtree: true });
@@ -116,7 +132,33 @@ export function FullTimeSnippet({
       </div>
 
       <div className="bg-white p-4">
-        <div ref={hostRef} className="ft-snippet overflow-x-auto" />
+        <div className="relative">
+          <div
+            ref={hostRef}
+            className="ft-snippet overflow-x-auto"
+            style={
+              overflows && !expanded
+                ? { maxHeight: "560px", overflowY: "hidden" }
+                : undefined
+            }
+          />
+          {overflows && !expanded && (
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+
+        {overflows && (
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="mt-3 w-full border-2 border-falcon-charcoal py-2 font-heading text-sm tracking-widest text-falcon-charcoal transition-colors hover:bg-falcon-charcoal hover:text-white"
+          >
+            {expanded ? "SHOW LESS" : "SHOW ALL FIXTURES"}
+          </button>
+        )}
 
         {state === "loading" && (
           <p className="py-6 text-center text-sm text-falcon-charcoal/70">

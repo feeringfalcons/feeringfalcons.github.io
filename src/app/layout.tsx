@@ -59,7 +59,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning: the inline script below adds `js-reveal` to
+    // <html> before React hydrates, so the client element legitimately differs
+    // from the server one. Scoped to this element only.
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Runs before first paint. Arms the scroll-reveal hidden state only
             when JS is actually available, and force-reveals everything if
