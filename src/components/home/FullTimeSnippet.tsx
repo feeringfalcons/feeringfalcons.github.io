@@ -148,6 +148,35 @@ export function FullTimeSnippet({
     };
   }, [code]);
 
+  // Clipping with overflow:hidden only hides rows visually — they stay in the
+  // tab order and the accessibility tree. With a 155-fixture feed that left
+  // hundreds of invisible focusable links behind the fade, so genuinely remove
+  // the out-of-view rows instead of just covering them up.
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || state !== "ready") return;
+
+    function apply() {
+      if (!host) return;
+      const rows = host.querySelectorAll<HTMLTableRowElement>("tr");
+      if (expanded) {
+        rows.forEach((r) => r.removeAttribute("hidden"));
+        return;
+      }
+      rows.forEach((r) => r.removeAttribute("hidden"));
+      const cap = host.clientHeight;
+      const top = host.getBoundingClientRect().top;
+      rows.forEach((r) => {
+        const rect = r.getBoundingClientRect();
+        if (rect.top - top >= cap) r.setAttribute("hidden", "");
+      });
+    }
+
+    apply();
+    window.addEventListener("resize", apply);
+    return () => window.removeEventListener("resize", apply);
+  }, [expanded, state]);
+
   return (
     <div className="border-2 border-falcon-charcoal">
       <div className="flex items-center justify-between bg-falcon-charcoal px-4 py-2">
