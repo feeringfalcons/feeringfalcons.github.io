@@ -91,24 +91,43 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9375rem;
 }
 
-.ft-snippet tr:first-child td {
+.ft-snippet td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--color-falcon-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Full-Time groups fixtures under a date row, which is the only cell that
+   carries a colspan. That is the reliable hook for the group header. */
+.ft-snippet td[colspan] {
   background: var(--color-falcon-charcoal);
   color: #fff;
   font-family: var(--font-heading);
   font-size: 0.8125rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 0;
 }
 
-.ft-snippet td {
-  padding: 0.625rem 0.75rem;
-  border-bottom: 1px solid var(--color-falcon-border);
-  text-align: left;
-  white-space: nowrap;
+/* Fixture rows are: [empty] | home | "v" | away | venue */
+.ft-snippet td:empty {
+  padding: 0;
+  width: 0;
 }
 
-.ft-snippet tr:nth-child(even) td {
-  background: var(--color-falcon-cream);
+.ft-snippet td:nth-child(3) {
+  width: 1.5rem;
+  text-align: center;
+  color: var(--color-falcon-charcoal);
+  opacity: 0.45;
+  font-style: italic;
+}
+
+.ft-snippet td:nth-child(5) {
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-falcon-charcoal) 70%, transparent);
 }
 
 .ft-snippet tr:last-child td {

@@ -57,12 +57,19 @@ export function FullTimeSnippet({
       });
       target.querySelectorAll("img").forEach((el) => el.remove());
 
-      // Pick our own club out of the list — the whole point of putting a
-      // league table on a club site is finding your team at a glance.
-      target.querySelectorAll("td").forEach((el) => {
-        if (/feering/i.test(el.textContent ?? "")) {
-          el.classList.add("is-falcons");
-        }
+      // Pick our own club out of the list — the point of putting a league feed
+      // on a club site is finding your team at a glance. Only the home/away
+      // cells, not the venue column, which is often named after a Falcons
+      // pitch and would highlight almost every row.
+      target.querySelectorAll("tr").forEach((row) => {
+        const cells = row.querySelectorAll("td");
+        if (cells.length < 4) return; // date header row
+        [1, 3].forEach((i) => {
+          const cell = cells[i];
+          if (cell && /feering/i.test(cell.textContent ?? "")) {
+            cell.classList.add("is-falcons");
+          }
+        });
       });
     }
 

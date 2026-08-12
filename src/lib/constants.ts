@@ -37,7 +37,9 @@ export const CLUB = {
   // Verified working example (C&DYL U13 A Division table, from the league's
   // own public site): code "307148219" — useful for checking the styling.
   fullTime: {
-    snippets: [] as { label: string; code: string }[],
+    snippets: [
+      { label: "Upcoming fixtures", code: "320717005" },
+    ] as { label: string; code: string }[],
     publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
   },
   values: [

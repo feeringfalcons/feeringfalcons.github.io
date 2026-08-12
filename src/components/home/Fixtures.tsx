@@ -40,7 +40,11 @@ export function Fixtures() {
         </div>
 
         {snippets.length > 0 ? (
-          <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div
+            className={`mt-8 grid gap-8 ${
+              snippets.length > 1 ? "lg:grid-cols-2" : ""
+            }`}
+          >
             {snippets.map((s) => (
               <FullTimeSnippet
                 key={s.code}
