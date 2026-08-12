@@ -34,8 +34,13 @@ export const CLUB = {
   // One snippet covers one league, and Falcons span C&DYL *and* BDYFL, so
   // expect up to four codes for full coverage.
   //
-  // Verified working example (C&DYL U13 A Division table, from the league's
-  // own public site): code "307148219" — useful for checking the styling.
+  // Codes generated but deliberately NOT used:
+  //   "325077688" — Club results (200). Left out on purpose: leagues don't
+  //     publish results at U11 and below, so it would show U12/U13 only and
+  //     make the club's public face a scoreline, against "development over
+  //     results". Kept here in case that call is ever revisited.
+  //   "307148219" — C&DYL U13 A Division table, from the league's public
+  //     site. Handy for testing styling without club credentials.
   fullTime: {
     snippets: [
       { label: "Upcoming fixtures", code: "549852193" },

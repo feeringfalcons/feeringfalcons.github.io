@@ -2,7 +2,13 @@ import { CLUB } from "@/lib/constants";
 import { FullTimeSnippet } from "./FullTimeSnippet";
 
 /**
- * Fixtures, results and tables from FA Full-Time.
+ * Upcoming fixtures from FA Full-Time.
+ *
+ * Fixtures only, deliberately — no results or tables. Leagues don't publish
+ * results at U11 and below, so a results feed would show U12s and U13s alone,
+ * putting exactly the scorelines the club plays down front and centre while
+ * younger teams are shielded from the same. "Development over results" is the
+ * club's own line; the site should hold to it.
  *
  * Why this is an embed and not our own data: Full-Time publishes no API and no
  * iCal feed, its robots.txt is `User-agent: * / Disallow: /`, and the fixture
@@ -23,10 +29,10 @@ export function Fixtures() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="font-heading text-sm tracking-widest text-falcon-charcoal/70">
-              THIS WEEKEND
+              UPCOMING
             </p>
             <h2 className="mt-2 font-heading text-[clamp(2rem,5vw,3.5rem)] leading-[0.9] text-falcon-charcoal">
-              FIXTURES &amp; RESULTS
+              FIXTURES
             </h2>
           </div>
           <a
@@ -35,7 +41,7 @@ export function Fixtures() {
             rel="noopener noreferrer"
             className="font-heading text-sm tracking-wider text-falcon-red hover:underline"
           >
-            FULL TABLES ON FA FULL-TIME &rarr;
+            ALL FIXTURES ON FA FULL-TIME &rarr;
           </a>
         </div>
 
