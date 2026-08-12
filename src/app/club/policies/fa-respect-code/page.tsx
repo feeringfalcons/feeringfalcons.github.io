@@ -159,7 +159,7 @@ export default function FaRespectCodePage() {
         </p>
       </div>
 
-      <p className="mt-6 text-sm text-falcon-charcoal/40">
+      <p className="mt-6 text-sm text-falcon-charcoal/70">
         Based on The FA&apos;s Respect Code of Conduct. For more information
         visit{" "}
         <a

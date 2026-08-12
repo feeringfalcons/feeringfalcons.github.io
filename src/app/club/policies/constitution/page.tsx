@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ConstitutionPage() {
   return (
     <PolicyPage title="Club Rules / Constitution">
-      <p className="text-sm text-falcon-charcoal/40">Version Sept 2023</p>
+      <p className="text-sm text-falcon-charcoal/70">Version Sept 2023</p>
 
       <h2>1. Name</h2>
       <p>

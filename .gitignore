@@ -46,3 +46,6 @@ next-env.d.ts
 "2026 Five A Side Invite Letter.pdf"
 "5aside flyer.png"
 "Managers Guide - 2021.doc"
+
+# cached font download for scripts/build-images.py (re-fetched if missing)
+scripts/.bebas-neue.ttf

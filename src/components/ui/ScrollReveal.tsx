@@ -2,6 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Reveals children as they scroll into view.
+ *
+ * Progressive enhancement matters here: this is a statically exported site, so
+ * every section is already in the prerendered HTML. The hidden starting state
+ * is therefore applied by CSS that only bites once the inline script in
+ * layout.tsx has added `js-reveal` to <html>. No JS (or a failed bundle on
+ * patchy rural 4G) means the content simply renders visible, rather than
+ * sitting there at opacity:0 forever.
+ */
 export function ScrollReveal({
   children,
   className = "",
@@ -17,16 +27,12 @@ export function ScrollReveal({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Respect reduced motion preference
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    // Tell the safety timeout in layout.tsx that React got here, so it knows
+    // the observers below are live and it doesn't need to force-reveal.
+    document.documentElement.setAttribute("data-hydrated", "");
 
-    if (prefersReducedMotion) {
-      setVisible(true);
-      return;
-    }
-
+    // Reduced motion is handled purely in CSS (globals.css keeps .reveal fully
+    // opaque under the media query), so there's nothing to special-case here.
     const el = ref.current;
     if (!el) return;
 
@@ -47,8 +53,8 @@ export function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`${className} ${stagger ? "stagger-children" : ""} ${
-        visible ? animation : "opacity-0"
+      className={`reveal ${className} ${stagger ? "stagger-children" : ""} ${
+        visible ? `reveal-visible ${animation}` : ""
       }`}
     >
       {children}

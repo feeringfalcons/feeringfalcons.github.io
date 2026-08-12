@@ -3,7 +3,7 @@ export const CLUB = {
   shortName: "Feering Falcons",
   founded: 1978,
   tagline:
-    "Join us as we take flight into a new era of youth football, where passion meets precision",
+    "Born in the fields of Feering and Kelvedon. Still here, still playing.",
   originLine: "Born in the fields of Feering and Kelvedon",
   ground: {
     name: "Elm Farm",
@@ -17,6 +17,19 @@ export const CLUB = {
     { name: "Blackwater and Dengie Youth Football League", shortName: "BDYFL", url: "https://bdyfl.org/" },
   ],
   accreditation: "England Football Accredited Club",
+  playerCount: "200+",
+  // FA Full-Time. Scraping this at build time is not possible — the site is
+  // behind Cloudflare bot management and returns 403 to anything that isn't a
+  // real browser — so the official embed is the supported route.
+  // To switch it on: league Full-Time admin → Publish/Website → copy the
+  // generated iframe src into embedUrl below.
+  // NB: one embed covers one league. Falcons teams span C&DYL *and* BDYFL, so
+  // you may want two, or link out to both.
+  fullTime: {
+    embedUrl: "",
+    publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
+    height: 620,
+  },
   values: [
     { title: "Positivity First", description: "Play positive, win positive" },
     {
@@ -52,9 +65,9 @@ export const CLUB = {
     childWelfare: { name: "I Hayhoe", email: "childwelfare@feeringfalcons.com" },
   },
   presentationNight: "Friday 5th June",
+  // 2026/27 season — from the club's Team / League List.
   teams: [
     "Fledglings",
-    "U6",
     "U7 Blues",
     "U7 Reds",
     "U8 Girls",
@@ -67,13 +80,12 @@ export const CLUB = {
     "U11 Blues",
     "U11 Reds",
     "U12 Blues",
-    "U12 Raptors",
-    "U13",
-    "U14",
+    "U12 Reds",
+    "U13 Blues",
+    "U13 Raptors",
   ],
   joinAgeGroups: [
     "Fledglings",
-    "Under 6",
     "Under 7",
     "Under 8",
     "Under 9",
@@ -81,7 +93,6 @@ export const CLUB = {
     "Under 11",
     "Under 12",
     "Under 13",
-    "Under 14",
   ],
 } as const;
 

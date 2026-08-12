@@ -17,7 +17,7 @@ export default function AboutPage() {
       <section className="pb-8 pt-16 sm:pt-24">
         <Container>
           <ScrollReveal animation="animate-slide-in-left">
-            <p className="font-heading text-sm tracking-widest text-falcon-charcoal/30">
+            <p className="font-heading text-sm tracking-widest text-falcon-charcoal/70">
               EST. {CLUB.founded}
             </p>
             <h1 className="mt-3 font-heading text-[clamp(3rem,9vw,7rem)] leading-[0.82] tracking-tight text-falcon-charcoal">
@@ -65,7 +65,7 @@ export default function AboutPage() {
               <br />
               CONFIDENCE OVER COMPETITION.
             </p>
-            <p className="mt-6 max-w-xl text-lg italic text-white/60">
+            <p className="mt-6 max-w-xl text-lg italic text-white/90">
               We believe that every child who pulls on a Feering Falcons shirt
               should leave the pitch having had fun, learned something, and
               felt part of a team.
@@ -173,7 +173,7 @@ export default function AboutPage() {
                   <br />
                   WELCOME
                 </h2>
-                <p className="mt-6 text-lg text-white/80">
+                <p className="mt-6 text-lg text-white/90">
                   Whether your child is picking up a football for the first time
                   or looking for a new club, we&apos;d love to hear from you.
                 </p>
@@ -186,7 +186,7 @@ export default function AboutPage() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-1.5 h-2.5 w-2.5 shrink-0 bg-white" />
-                      <span className="text-white/80">{item}</span>
+                      <span className="text-white/90">{item}</span>
                     </li>
                   ))}
                 </ul>

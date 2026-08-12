@@ -28,7 +28,7 @@ export default function ClubInfoPage() {
               <span key={link.href} className="flex items-center gap-4">
                 <a
                   href={link.href}
-                  className="font-heading text-sm tracking-wider text-falcon-charcoal/50 transition-colors hover:text-falcon-red"
+                  className="font-heading text-sm tracking-wider text-falcon-charcoal/70 transition-colors hover:text-falcon-red"
                 >
                   {link.label.toUpperCase()}
                 </a>
@@ -47,7 +47,7 @@ export default function ClubInfoPage() {
           <ScrollReveal>
             <div className="grid gap-10 lg:grid-cols-5 lg:gap-16">
               <div className="lg:col-span-2">
-                <p className="font-heading text-sm tracking-widest text-falcon-charcoal/30">
+                <p className="font-heading text-sm tracking-widest text-falcon-charcoal/70">
                   HOME GROUND
                 </p>
                 <h1 className="mt-3 font-heading text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.85] tracking-tight text-falcon-charcoal">
@@ -59,7 +59,7 @@ export default function ClubInfoPage() {
                   <p className="text-lg text-falcon-charcoal/80">
                     {CLUB.ground.fullAddress}
                   </p>
-                  <p className="mt-1 text-sm text-falcon-charcoal/50">
+                  <p className="mt-1 text-sm text-falcon-charcoal/70">
                     Use {CLUB.ground.postcode} for sat nav
                   </p>
                 </div>
@@ -107,7 +107,7 @@ export default function ClubInfoPage() {
                   </p>
                   <a
                     href={`mailto:${officer.email}`}
-                    className="text-sm text-falcon-charcoal/50 hover:text-falcon-red"
+                    className="text-sm text-falcon-charcoal/70 hover:text-falcon-red"
                   >
                     {officer.email}
                   </a>
@@ -203,7 +203,7 @@ export default function ClubInfoPage() {
             <h2 className="font-heading text-2xl text-falcon-charcoal sm:text-3xl">
               POLICIES & PROCEDURES
             </h2>
-            <p className="mt-1 text-sm text-falcon-charcoal/40">
+            <p className="mt-1 text-sm text-falcon-charcoal/70">
               2025/26 Season
             </p>
             <div className="mt-6">
@@ -219,7 +219,7 @@ export default function ClubInfoPage() {
                     <span className="font-medium text-falcon-charcoal group-hover:text-falcon-red">
                       {policy.title}
                     </span>
-                    <span className="flex items-center gap-2 text-sm text-falcon-charcoal/30 group-hover:text-falcon-red">
+                    <span className="flex items-center gap-2 text-sm text-falcon-charcoal/70 group-hover:text-falcon-red">
                       <span className="hidden sm:inline">PDF</span>
                       <svg
                         className="h-4 w-4"
@@ -246,7 +246,7 @@ export default function ClubInfoPage() {
                       {policy.title}
                     </span>
                     <svg
-                      className="h-4 w-4 text-falcon-charcoal/30 group-hover:text-falcon-red"
+                      className="h-4 w-4 text-falcon-charcoal/70 group-hover:text-falcon-red"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

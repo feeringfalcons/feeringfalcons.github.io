@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { NAV_LINKS, CLUB } from "@/lib/constants";
 
 export function MobileNav({
@@ -12,19 +12,45 @@ export function MobileNav({
   open: boolean;
   onClose: () => void;
 }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<Element | null>(null);
+
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
 
+  // Move focus into the drawer on open and hand it back to whatever opened it
+  // on close, so keyboard and screen-reader users aren't dumped at the top.
+  useEffect(() => {
+    if (open) {
+      openerRef.current = document.activeElement;
+      closeRef.current?.focus();
+    } else if (openerRef.current instanceof HTMLElement) {
+      openerRef.current.focus();
+      openerRef.current = null;
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open, onClose]);
+
   return (
+    // `inert` while closed: without it the drawer's links stay in the tab
+    // order and keyboard users tab through an invisible menu.
     <div
+      inert={!open}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
       className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
         open ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
@@ -54,7 +80,13 @@ export function MobileNav({
             </span>
           </Link>
 
-          <button type="button" onClick={onClose} aria-label="Close menu">
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label="Close menu"
+            className="-m-3 p-3"
+          >
             <svg
               className="h-6 w-6 text-falcon-charcoal"
               fill="none"

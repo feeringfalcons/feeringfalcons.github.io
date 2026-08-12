@@ -69,8 +69,9 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="lg:hidden"
+            className="-m-3 p-3 lg:hidden"
             aria-label="Open menu"
+            aria-expanded={mobileOpen}
           >
             <svg
               className="h-6 w-6 text-falcon-charcoal"

@@ -9,7 +9,7 @@ export function Footer() {
           {/* Club info */}
           <div>
             <p className="font-heading text-2xl">{CLUB.shortName}</p>
-            <p className="mt-1 text-sm text-white/50">Est. {CLUB.founded}</p>
+            <p className="mt-1 text-sm text-white/70">Est. {CLUB.founded}</p>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               {CLUB.ground.fullAddress}
             </p>
@@ -20,7 +20,7 @@ export function Footer() {
 
           {/* Quick links */}
           <div>
-            <p className="font-heading text-sm tracking-widest text-white/40">
+            <p className="font-heading text-sm tracking-widest text-white/70">
               QUICK LINKS
             </p>
             <ul className="mt-4 space-y-3">
@@ -55,7 +55,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <p className="font-heading text-sm tracking-widest text-white/40">
+            <p className="font-heading text-sm tracking-widest text-white/70">
               FOLLOW US
             </p>
             <div className="mt-4 flex gap-5">
@@ -87,7 +87,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 border-t border-white/10 pt-6">
-          <p className="text-sm italic text-white/50">
+          <p className="text-sm italic text-white/70">
             {CLUB.originLine}
           </p>
         </div>

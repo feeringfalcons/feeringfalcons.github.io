@@ -48,7 +48,7 @@ export default function TournamentPage() {
       {/* ── Hero ── */}
       <section className="bg-falcon-red pb-16 pt-16 sm:pb-20 sm:pt-24">
         <Container>
-          <p className="font-heading text-sm tracking-widest text-white/40">
+          <p className="font-heading text-sm tracking-widest text-white/90">
             FEERING FALCONS PRESENT
           </p>
           <h1 className="mt-3 font-heading text-[clamp(2.8rem,14vw,11rem)] leading-[0.78] tracking-tight text-white">
@@ -59,7 +59,7 @@ export default function TournamentPage() {
           <p className="mt-6 font-heading text-[clamp(1.5rem,4vw,2.5rem)] text-white/90">
             {TOURNAMENT.date.toUpperCase()}
           </p>
-          <p className="mt-4 max-w-xl text-lg text-white/70">
+          <p className="mt-4 max-w-xl text-lg text-white/90">
             The big day is nearly here. Everything you need for the tournament,
             from registration times to the full rules, is below.
           </p>
@@ -94,7 +94,7 @@ export default function TournamentPage() {
       <section id="registration" className="scroll-mt-24 bg-falcon-charcoal py-16 sm:py-20">
         <Container>
           <ScrollReveal>
-            <p className="font-heading text-sm tracking-[0.2em] text-white/30">
+            <p className="font-heading text-sm tracking-[0.2em] text-white/70">
               ARRIVING ON THE DAY
             </p>
             <h2 className="mt-2 font-heading text-[clamp(2rem,6vw,3.5rem)] leading-[0.9] text-white">
@@ -118,7 +118,7 @@ export default function TournamentPage() {
                 </p>
                 <div className="mt-4 flex flex-wrap items-baseline gap-x-8 gap-y-2">
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-falcon-charcoal/40">
+                    <p className="text-xs uppercase tracking-wider text-falcon-charcoal/70">
                       Register by
                     </p>
                     <p className="font-heading text-3xl text-falcon-charcoal">
@@ -126,7 +126,7 @@ export default function TournamentPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-falcon-charcoal/40">
+                    <p className="text-xs uppercase tracking-wider text-falcon-charcoal/70">
                       Kick-off
                     </p>
                     <p className="font-heading text-3xl text-falcon-charcoal">
@@ -135,7 +135,7 @@ export default function TournamentPage() {
                   </div>
                 </div>
                 <div className="mt-6 border-t border-falcon-border pt-5">
-                  <p className="text-xs uppercase tracking-wider text-falcon-charcoal/40">
+                  <p className="text-xs uppercase tracking-wider text-falcon-charcoal/70">
                     Age groups
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -215,7 +215,7 @@ export default function TournamentPage() {
       <section id="rules" className="scroll-mt-24 bg-falcon-cream py-16 sm:py-24">
         <Container>
           <ScrollReveal>
-            <p className="font-heading text-sm tracking-[0.2em] text-falcon-charcoal/30">
+            <p className="font-heading text-sm tracking-[0.2em] text-falcon-charcoal/70">
               PLEASE READ CAREFULLY
             </p>
             <h2 className="mt-2 font-heading text-[clamp(2.5rem,8vw,5rem)] leading-[0.85] text-falcon-charcoal">
@@ -319,7 +319,7 @@ export default function TournamentPage() {
       <section id="directions" className="scroll-mt-24 bg-falcon-charcoal py-16 sm:py-20">
         <Container>
           <ScrollReveal>
-            <p className="font-heading text-sm tracking-[0.2em] text-white/30">
+            <p className="font-heading text-sm tracking-[0.2em] text-white/70">
               GETTING THERE
             </p>
             <h2 className="mt-2 font-heading text-[clamp(2rem,6vw,3.5rem)] leading-[0.9] text-white">
@@ -350,7 +350,7 @@ export default function TournamentPage() {
                 <ol className="mt-3 space-y-2">
                   {route.steps.map((step, i) => (
                     <li key={step} className="flex gap-3 text-sm text-white/70">
-                      <span className="font-heading text-white/30">{i + 1}</span>
+                      <span className="font-heading text-white/70">{i + 1}</span>
                       <span className="leading-relaxed">{step}</span>
                     </li>
                   ))}
@@ -366,15 +366,15 @@ export default function TournamentPage() {
         <Container>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="font-heading text-sm tracking-widest text-white/40">
+              <p className="font-heading text-sm tracking-widest text-white/90">
                 TOURNAMENT CONTACT
               </p>
               <p className="mt-1 text-lg text-white">{TOURNAMENT.contact.name}</p>
-              <p className="text-white/60">
+              <p className="text-white/90">
                 Any questions or unsure of the arrangements? Give Andrew a call.
               </p>
             </div>
-            <div className="flex flex-col gap-1 text-white/70 sm:text-right">
+            <div className="flex flex-col gap-1 text-white/90 sm:text-right">
               <a
                 href={`mailto:${TOURNAMENT.contact.email}`}
                 className="hover:text-white"

@@ -15,7 +15,7 @@ export function PolicyPage({
         <div className="mx-auto max-w-3xl">
           <Link
             href="/club#policies"
-            className="inline-flex items-center gap-1 text-sm text-falcon-charcoal/50 transition-colors hover:text-falcon-red"
+            className="inline-flex items-center gap-1 text-sm text-falcon-charcoal/70 transition-colors hover:text-falcon-red"
           >
             <svg
               className="h-4 w-4"
@@ -37,7 +37,7 @@ export function PolicyPage({
             {title.toUpperCase()}
           </h1>
 
-          <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-falcon-charcoal/40">
+          <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-falcon-charcoal/70">
             <p>
               Chairman: {CLUB.officers.chairman.name} &mdash;{" "}
               <a

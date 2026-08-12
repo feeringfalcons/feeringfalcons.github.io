@@ -16,7 +16,7 @@ export default function SponsorshipPage() {
       <section className="pb-12 pt-16 sm:pt-24">
         <Container>
           <ScrollReveal animation="animate-slide-in-left">
-            <p className="font-heading text-sm tracking-widest text-falcon-charcoal/30">
+            <p className="font-heading text-sm tracking-widest text-falcon-charcoal/70">
               SPONSORSHIP OPPORTUNITIES
             </p>
             <h1 className="mt-3 font-heading text-[clamp(3rem,9vw,7rem)] leading-[0.82] tracking-tight text-falcon-charcoal">
@@ -40,13 +40,13 @@ export default function SponsorshipPage() {
             <div className="grid gap-0 sm:grid-cols-2">
               {/* Ground banner */}
               <div className="border-b-2 border-white/10 p-8 sm:border-b-0 sm:border-r-2 sm:p-10">
-                <p className="font-heading text-sm tracking-widest text-white/30">
+                <p className="font-heading text-sm tracking-widest text-white/70">
                   GROUND BANNER
                 </p>
                 <p className="mt-4 font-heading text-[clamp(4rem,8vw,6rem)] leading-none text-white">
                   £300
                 </p>
-                <p className="mt-2 text-white/40">
+                <p className="mt-2 text-white/70">
                   for 2 years &mdash; £150 for existing kit sponsors
                 </p>
                 <ul className="mt-8 space-y-3">
@@ -73,13 +73,13 @@ export default function SponsorshipPage() {
 
               {/* Pitch map */}
               <div className="p-8 sm:p-10">
-                <p className="font-heading text-sm tracking-widest text-white/30">
+                <p className="font-heading text-sm tracking-widest text-white/70">
                   PITCH MAP
                 </p>
                 <p className="mt-4 font-heading text-[clamp(4rem,8vw,6rem)] leading-none text-falcon-red">
                   £500
                 </p>
-                <p className="mt-2 text-white/40">for 2 years</p>
+                <p className="mt-2 text-white/70">for 2 years</p>
                 <ul className="mt-8 space-y-3">
                   <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-2 w-2 shrink-0 bg-falcon-red" />
@@ -137,7 +137,7 @@ export default function SponsorshipPage() {
       <section className="bg-falcon-red py-16 sm:py-20">
         <Container>
           <ScrollReveal>
-            <p className="max-w-2xl text-xl italic text-white/70 sm:text-2xl">
+            <p className="max-w-2xl text-xl italic text-white/90 sm:text-2xl">
               Let&apos;s build a ground that looks like home.
             </p>
             <p className="mt-3 font-heading text-[clamp(2rem,5vw,4rem)] leading-[0.85] text-white">
@@ -153,7 +153,7 @@ export default function SponsorshipPage() {
                 GET IN TOUCH
               </a>
             </p>
-            <p className="mt-4 text-sm text-white/50">
+            <p className="mt-4 text-sm text-white/90">
               Or speak to your team manager
             </p>
           </ScrollReveal>

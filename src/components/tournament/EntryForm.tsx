@@ -218,7 +218,7 @@ export function EntryForm() {
               >
                 <div>
                   <span className="font-medium text-falcon-charcoal">{ag}</span>
-                  <span className="ml-2 text-xs text-falcon-charcoal/50">
+                  <span className="ml-2 text-xs text-falcon-charcoal/70">
                     (max {maxSquad} players)
                   </span>
                 </div>
