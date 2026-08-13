@@ -8,7 +8,7 @@ import { CLUB, POLICIES } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Club Info",
   description:
-    "Everything you need to know about Feering Falcons Youth Football Club -location, safeguarding, policies, and contact details.",
+    "Everything you need to know about Feering Falcons Youth Football Club: location, safeguarding, policies and contact details.",
 };
 
 export default function ClubInfoPage() {

@@ -5,7 +5,7 @@ import { CLUB } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "FA Respect Code of Conduct",
   description:
-    "The FA Respect Code of Conduct for young players at Feering Falcons Youth Football Club -play fair, show respect, enjoy the game.",
+    "The FA Respect Code of Conduct for young players at Feering Falcons Youth Football Club: play fair, show respect, enjoy the game.",
 };
 
 export default function FaRespectCodePage() {
@@ -13,8 +13,8 @@ export default function FaRespectCodePage() {
     <PolicyPage title="FA Respect Code of Conduct">
       <p>
         Feering Falcons Youth Football Club is committed to The FA&apos;s
-        Respect programme. We expect everyone involved with the club -players,
-        parents, coaches and officials -to follow these codes of conduct.
+        Respect programme. We expect everyone involved with the club, whether players,
+        parents, coaches or officials, to follow these codes of conduct.
       </p>
 
       <h2>Young Players</h2>
@@ -59,7 +59,7 @@ export default function FaRespectCodePage() {
       </p>
       <ul>
         <li>
-          Remember that children play for fun and learning -winning isn&apos;t
+          Remember that children play for fun and learning. Winning isn&apos;t
           everything
         </li>
         <li>
@@ -68,21 +68,21 @@ export default function FaRespectCodePage() {
         </li>
         <li>Encourage and applaud effort, not just results</li>
         <li>
-          Respect the referee&apos;s decisions -they are human and doing their
+          Respect the referee&apos;s decisions. They are human and doing their
           best
         </li>
         <li>
           Never use abusive language or engage in intimidating behaviour
         </li>
         <li>
-          Never criticise a child for making a mistake -mistakes are part of
+          Never criticise a child for making a mistake. Mistakes are part of
           learning
         </li>
         <li>
           Applaud good play from both teams
         </li>
         <li>
-          Show respect to our club volunteers -they give up their time to
+          Show respect to our club volunteers. They give up their time to
           provide football for your child
         </li>
       </ul>

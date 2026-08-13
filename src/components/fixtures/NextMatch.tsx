@@ -95,7 +95,7 @@ export function NextMatch({
           )}
           {venue.kind === "unknown" && (
             <dd className="mt-1 text-falcon-charcoal">
-              Not confirmed — check with your team manager.
+              Not confirmed. Check with your team manager.
             </dd>
           )}
         </dl>

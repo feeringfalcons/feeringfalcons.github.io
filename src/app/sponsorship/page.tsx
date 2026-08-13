@@ -6,7 +6,7 @@ import { CLUB } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Sponsorship Opportunities",
   description:
-    "Sponsor Feering Falcons Youth Football Club -ground banner and pitch map sponsorship opportunities for local businesses.",
+    "Sponsor Feering Falcons Youth Football Club: ground banner and pitch map sponsorship opportunities for local businesses.",
 };
 
 export default function SponsorshipPage() {
@@ -47,7 +47,7 @@ export default function SponsorshipPage() {
                   £300
                 </p>
                 <p className="mt-2 text-white/70">
-                  for 2 years &mdash; £150 for existing kit sponsors
+                  for 2 years. £150 for existing kit sponsors
                 </p>
                 <ul className="mt-8 space-y-3">
                   <li className="flex items-start gap-3">
@@ -59,7 +59,7 @@ export default function SponsorshipPage() {
                   <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-2 w-2 shrink-0 bg-falcon-red" />
                     <span className="text-white/70">
-                      2–3 club-branded banners per sponsor
+                      2 to 3 club-branded banners per sponsor
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
@@ -118,14 +118,14 @@ export default function SponsorshipPage() {
           <ScrollReveal>
             <div className="max-w-2xl">
               <p className="text-lg leading-relaxed text-falcon-charcoal/70">
-                Feering Falcons is more than just football -we&apos;re a
+                Feering Falcons is more than just football. We&apos;re a
                 community of local families, week in, week out. These
-                sponsorships don&apos;t just promote businesses -they help
+                sponsorships don&apos;t just promote businesses. They help
                 create a more professional, welcoming atmosphere for all our
                 players and visitors.
               </p>
               <p className="mt-4 text-falcon-charcoal/60">
-                We handle all logistics -installation, maintenance, and
+                We handle all logistics: installation, maintenance and
                 keeping your banner in top shape.
               </p>
             </div>

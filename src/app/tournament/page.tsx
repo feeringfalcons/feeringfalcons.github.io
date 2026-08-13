@@ -44,7 +44,7 @@ export default function TournamentPage() {
           </p>
           <p className="mt-4 max-w-xl text-lg text-white/90">
             Our flagship event, held at Elm Farm every {TOURNAMENT.lastHeld.monthHint}.
-            The {TOURNAMENT.lastHeld.year} tournament is done and dusted — the
+            The {TOURNAMENT.lastHeld.year} tournament is done and dusted. The
             date for {TOURNAMENT.nextYear} hasn&apos;t been set yet.
           </p>
         </Container>
@@ -97,7 +97,7 @@ export default function TournamentPage() {
               <p className="mt-6 text-lg leading-relaxed text-white/80">
                 Once the {TOURNAMENT.nextYear} date is fixed, it will go up on
                 this page along with entry details, the fee, registration times
-                and the full rules. Nothing to do in the meantime — there is no
+                and the full rules. Nothing to do in the meantime: there is no
                 waiting list and no entry form open.
               </p>
               <p className="mt-4 leading-relaxed text-white/70">

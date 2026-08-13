@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Feering Falcons Youth Football Club — Take Flight. Est. 1978, Elm Farm, Marks Tey.",
+        alt: "Feering Falcons Youth Football Club. Take Flight. Est. 1978, Elm Farm, Marks Tey.",
       },
     ],
   },

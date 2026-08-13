@@ -19,7 +19,7 @@ export function UpdateCards() {
             </h2>
             <p className="mt-4 max-w-lg text-lg text-white/60">
               Over 100 teams at Elm Farm every June, U7 through U15. The{" "}
-              {TOURNAMENT.lastHeld.year} tournament has been and gone — the{" "}
+              {TOURNAMENT.lastHeld.year} tournament has been and gone. The{" "}
               {TOURNAMENT.nextYear} date is still to be confirmed.
             </p>
             <Link

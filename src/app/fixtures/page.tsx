@@ -50,7 +50,7 @@ export default function FixturesPage() {
             <p className="mt-3 leading-relaxed text-falcon-charcoal/70">
               Not every team appears here. Our teams play across the{" "}
               {CLUB.leagues[0].shortName} and {CLUB.leagues[1].shortName}, and
-              some age groups — including Fledglings and our U8 Girls — don&apos;t
+              some age groups, including Fledglings and our U8 Girls, don&apos;t
               have fixtures published through this feed. Pick the team above to
               see exactly where it stands.
             </p>

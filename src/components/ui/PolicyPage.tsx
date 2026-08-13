@@ -39,7 +39,7 @@ export function PolicyPage({
 
           <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-falcon-charcoal/70">
             <p>
-              Chairman: {CLUB.officers.chairman.name} &mdash;{" "}
+              Chairman: {CLUB.officers.chairman.name},{" "}
               <a
                 href={`mailto:${CLUB.officers.chairman.email}`}
                 className="hover:text-falcon-red"
@@ -48,7 +48,7 @@ export function PolicyPage({
               </a>
             </p>
             <p>
-              Secretary: {CLUB.officers.secretary.name} &mdash;{" "}
+              Secretary: {CLUB.officers.secretary.name},{" "}
               <a
                 href={`mailto:${CLUB.officers.secretary.email}`}
                 className="hover:text-falcon-red"

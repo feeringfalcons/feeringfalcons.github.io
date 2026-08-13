@@ -86,7 +86,7 @@ export function TeamFixtures({
     return (
       <Notice heading="NOT PUBLISHED YET">
         {feed?.label} hasn&apos;t released its fixtures yet. They usually go up
-        shortly before the season starts — this page will show them as soon as
+        shortly before the season starts, and this page will show them as soon as
         they do.
       </Notice>
     );

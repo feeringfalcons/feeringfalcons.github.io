@@ -7,7 +7,7 @@ import { CLUB } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Feering Falcons Youth Football Club -developing young footballers in North Essex since 1978.",
+    "Learn about Feering Falcons Youth Football Club: developing young footballers in North Essex since 1978.",
 };
 
 export default function AboutPage() {
@@ -121,7 +121,7 @@ export default function AboutPage() {
               </p>
               <p className="mt-4 leading-relaxed text-white/60">
                 All coaches are DBS-checked with FA qualifications. We take
-                safeguarding seriously -every child is looked after by trained,
+                safeguarding seriously. Every child is looked after by trained,
                 dedicated volunteers who love the game.
               </p>
             </div>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                     PRESENTATION NIGHT
                   </p>
                   <p className="mt-2 text-falcon-charcoal/60">
-                    {CLUB.presentationNight} -celebrating the season with
+                    {CLUB.presentationNight}. Celebrating the season with
                     awards, trophies, and recognition for every player, across
                     both halls.
                   </p>
