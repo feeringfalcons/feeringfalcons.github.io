@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { Suspense } from "react";
-import { FixturesPanel } from "@/components/fixtures/FixturesPanel";
+import { WeekendFixtures } from "@/components/fixtures/WeekendFixtures";
 
 /**
- * Homepage fixtures module — deliberately small.
+ * Homepage matchday section: the club's next fixture weekend, all teams.
  *
- * /fixtures is the canonical fixture experience. The homepage still has to
- * explain and sell the club to families who haven't joined, so this shows one
- * team's next match for the parents who have already chosen one, and a plain
- * prompt for everyone else. It fetches nothing until a team is picked.
+ * The team picker lives on /fixtures rather than here. On the homepage the
+ * useful question is "is there football on, and who's playing", which suits a
+ * whole-club view; a parent who wants only their own team can tap the team name
+ * on any row, or the link through to /fixtures.
  */
 export function Fixtures() {
   return (
@@ -20,21 +19,19 @@ export function Fixtures() {
               MATCH DAY
             </p>
             <h2 className="mt-2 font-heading text-[clamp(2rem,5vw,3.5rem)] leading-[0.9] text-falcon-charcoal">
-              YOUR NEXT FIXTURE
+              WHO&apos;S PLAYING
             </h2>
           </div>
           <Link
             href="/fixtures"
             className="font-heading text-sm tracking-wider text-falcon-red hover:underline"
           >
-            ALL FIXTURES &rarr;
+            FIND YOUR TEAM&apos;S FIXTURES &rarr;
           </Link>
         </div>
 
-        <div className="mt-8 max-w-2xl">
-          <Suspense fallback={null}>
-            <FixturesPanel compact />
-          </Suspense>
+        <div className="mt-8 max-w-3xl">
+          <WeekendFixtures />
         </div>
       </div>
     </section>

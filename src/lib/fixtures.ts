@@ -180,6 +180,104 @@ export function relativeDay(dateISO: string, now = new Date()): string | null {
   return dateISO === at(t) ? "TOMORROW" : null;
 }
 
+export type ClubFixture = TeamFixture & { team: ClubTeam };
+
+/**
+ * Every fixture in a feed that involves one of our teams, tagged with which.
+ *
+ * A club-wide feed is one league's whole programme for the club, so this is
+ * mostly a filter, but it also resolves "Feering Falcons Y U13 Raptors" back to
+ * the U13 Raptors entry in TEAMS so we can label rows with a short name.
+ */
+export function clubFixtures(
+  fixtures: Fixture[],
+  teams: ClubTeam[],
+): ClubFixture[] {
+  const out: ClubFixture[] = [];
+  for (const f of fixtures) {
+    for (const team of teams) {
+      const isHome = matchesTeam(f.home, team);
+      const isAway = matchesTeam(f.away, team);
+      if (!isHome && !isAway) continue;
+      out.push({
+        ...f,
+        team,
+        isHome,
+        opponent: isHome ? f.away : f.home,
+      });
+      break;
+    }
+  }
+  return out;
+}
+
+/** Monday of the week a date falls in, as an ISO date. */
+function weekStart(dateISO: string): string {
+  const [y, m, d] = dateISO.split("-").map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d, 12));
+  // getUTCDay: 0 = Sunday. Shift so Monday starts the week, which keeps a
+  // Saturday and Sunday pair together in one block.
+  const offset = (dt.getUTCDay() + 6) % 7;
+  dt.setUTCDate(dt.getUTCDate() - offset);
+  return dt.toISOString().slice(0, 10);
+}
+
+export type FixtureWeek = {
+  /** Monday of the week, ISO. */
+  weekStart: string;
+  fixtures: ClubFixture[];
+  /** Distinct match dates in the week, ascending. */
+  dates: string[];
+};
+
+/**
+ * The next block of fixtures, grouped by week.
+ *
+ * Deliberately "the next week that has any", not "this coming weekend". The
+ * season has real gaps — Christmas, Easter, cup weekends, pitches frozen off —
+ * so a homepage that only ever looks at the imminent weekend would sit empty
+ * for weeks at a time. Callers can compare weekStart against the current week
+ * to decide whether to say "this weekend" or name the date.
+ */
+export function nextFixtureWeek(
+  fixtures: ClubFixture[],
+  now = new Date(),
+): FixtureWeek | null {
+  const future = upcoming(fixtures, now);
+  if (!future.length) return null;
+
+  const earliest = future.reduce(
+    (min, f) => (f.dateISO < min ? f.dateISO : min),
+    future[0].dateISO,
+  );
+  const target = weekStart(earliest);
+
+  const inWeek = future
+    .filter((f) => weekStart(f.dateISO) === target)
+    .sort(
+      (a, b) =>
+        a.dateISO.localeCompare(b.dateISO) ||
+        // Confirmed kick-offs first, in time order; TBC after them.
+        (a.kickoff ?? "99:99").localeCompare(b.kickoff ?? "99:99") ||
+        // Then youngest first. Sorting on the label would put U8 after U13.
+        (a.team.age ?? 0) - (b.team.age ?? 0) ||
+        a.team.label.localeCompare(b.team.label),
+    );
+
+  return {
+    weekStart: target,
+    fixtures: inWeek,
+    dates: [...new Set(inWeek.map((f) => f.dateISO))],
+  };
+}
+
+/** Is this week the one the given date sits in? */
+export function isCurrentWeek(weekStartISO: string, now = new Date()): boolean {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const todayISO = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  return weekStart(todayISO) === weekStartISO;
+}
+
 export type VenueInfo =
   | { kind: "home" }
   | { kind: "away"; name: string }
