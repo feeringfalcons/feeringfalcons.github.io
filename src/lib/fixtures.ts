@@ -86,6 +86,53 @@ function parseDateHeader(
 const cellText = (el: Element) =>
   (el.textContent ?? "").replace(/ /g, " ").replace(/\s+/g, " ").trim();
 
+/** Empty, an "X" placeholder, or a score. Nothing we want to read as a team. */
+const isFiller = (t: string) => /^(x|\d{1,2})?$/i.test(t);
+
+/**
+ * Pulls the two teams, venue and competition out of one fixture row.
+ *
+ * Located by finding the "v" separator and walking outwards, rather than by
+ * fixed column indexes, because Full-Time's snippet types don't agree on shape.
+ * The club-wide feed gives five cells:
+ *     ['', home, 'v', away, venue]
+ * a per-team snippet gives seven, with placeholders flanking the separator:
+ *     ['', home, 'X', 'v', 'X', away, venue]
+ * Reading index 3 as the away team is right for the first and yields the literal
+ * string "v" for the second. Those placeholders also fill with numbers once
+ * results are published, so the walk skips digits as well.
+ */
+function readFixtureRow(cells: Element[]) {
+  const texts = cells.map(cellText);
+
+  const v = texts.findIndex((t) => /^v$/i.test(t));
+  if (v === -1) {
+    // No separator. Fall back to the club-wide layout, so an unforeseen variant
+    // degrades to the previous behaviour rather than dropping every fixture.
+    return texts.length >= 4
+      ? { home: texts[1], away: texts[3], venue: texts[4] ?? "", competition: texts[0] }
+      : null;
+  }
+
+  let h = v - 1;
+  while (h >= 0 && isFiller(texts[h])) h--;
+  let a = v + 1;
+  while (a < texts.length && isFiller(texts[a])) a++;
+  if (h < 0 || a >= texts.length) return null;
+
+  let venue = "";
+  for (let i = texts.length - 1; i > a; i--) {
+    if (!isFiller(texts[i])) { venue = texts[i]; break; }
+  }
+
+  let competition = "";
+  for (let i = 0; i < h; i++) {
+    if (!isFiller(texts[i])) { competition = texts[i]; break; }
+  }
+
+  return { home: texts[h], away: texts[a], venue, competition };
+}
+
 /** Parses one Full-Time container into fixtures, in feed order. */
 export function parseFixtures(root: ParentNode): Fixture[] {
   const out: Fixture[] = [];
@@ -103,19 +150,18 @@ export function parseFixtures(root: ParentNode): Fixture[] {
 
     if (cells.length < 4 || !current) return;
 
-    const home = cellText(cells[1]);
-    const away = cellText(cells[3]);
-    if (!home || !away) return;
+    const row_ = readFixtureRow(cells);
+    if (!row_ || !row_.home || !row_.away) return;
 
     out.push({
       dateISO: current.dateISO,
       dateLabel: current.dateLabel,
       kickoff: current.kickoff,
       kickoffTbc: current.kickoff === null,
-      home,
-      away,
-      venueRaw: cells[4] ? cellText(cells[4]) : "",
-      competition: cellText(cells[0]).replace(/:$/, "") || null,
+      home: row_.home,
+      away: row_.away,
+      venueRaw: row_.venue,
+      competition: row_.competition.replace(/:$/, "") || null,
     });
   });
 
@@ -137,7 +183,11 @@ export function matchesTeam(fullTimeName: string, team: ClubTeam): boolean {
   if (!age || Number(age[1]) !== team.age) return false;
 
   if (!team.variant) return true;
-  return new RegExp(`\\b${team.variant}\\b`).test(s);
+  // Tolerate singular and plural. The club-wide BDYFL feed writes "U11 Blues",
+  // but we have no sight of how C&DYL will write theirs, and "Blue" instead of
+  // "Blues" would otherwise silently leave a team showing no fixtures.
+  const stem = team.variant.replace(/s$/, "");
+  return new RegExp(`\\b${stem}s?\\b`).test(s);
 }
 
 /** Fixtures involving one team, annotated with home/away and the opponent. */
