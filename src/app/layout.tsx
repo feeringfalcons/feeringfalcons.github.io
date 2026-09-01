@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Feering Falcons Youth Football Club",
     title: "Feering Falcons Youth Football Club",
     description:
-      "Grassroots youth football in Feering and Kelvedon, Essex. 16 teams, 200+ players, England Football Accredited. New players welcome.",
+      "Grassroots youth football in Feering and Kelvedon, Essex. 16 teams, 200+ players, England Football Accredited. Register your interest in playing.",
     url: "/",
     images: [
       {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Feering Falcons Youth Football Club",
     description:
-      "Grassroots youth football in Feering and Kelvedon, Essex. New players welcome.",
+      "Grassroots youth football in Feering and Kelvedon, Essex. Register your interest in playing.",
     images: ["/og-image.jpg"],
   },
 };

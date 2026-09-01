@@ -37,7 +37,8 @@ export function JoinForm() {
       <div role="status" className="border-l-4 border-green-600 bg-green-50 p-6">
         <p className="font-heading text-xl text-green-800">ENQUIRY SENT</p>
         <p className="mt-2 text-sm text-green-700">
-          Your team manager or secretary will be in touch shortly.
+          Our secretary will pass this on to the right team manager, who will
+          come back to you about where there is room.
         </p>
         <button
           type="button"
@@ -119,6 +120,21 @@ export function JoinForm() {
           required
           pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
           title="Please enter a valid email address (e.g. name@example.com)"
+          className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor="join-phone"
+          className="block text-sm font-medium text-falcon-charcoal"
+        >
+          Phone
+        </label>
+        <input
+          type="tel"
+          id="join-phone"
+          name="phone"
           className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
         />
       </div>

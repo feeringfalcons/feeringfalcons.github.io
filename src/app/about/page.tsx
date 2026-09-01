@@ -170,19 +170,26 @@ export default function AboutPage() {
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
                 <h2 className="font-heading text-[clamp(2.5rem,6vw,4rem)] leading-[0.85] text-white">
-                  NEW PLAYERS
+                  JOIN THE
                   <br />
-                  WELCOME
+                  FALCONS
                 </h2>
                 <p className="mt-6 text-lg text-white/90">
                   Whether your child is picking up a football for the first time
                   or looking for a new club, we&apos;d love to hear from you.
                 </p>
+                <p className="mt-4 text-white/80">
+                  Squads fill up, and each age group plays at a level that suits
+                  some players better than others, so we can&apos;t always
+                  promise a place straight away. Tell us about your child and
+                  we&apos;ll be honest about where there is room and which team
+                  would suit them best.
+                </p>
                 <ul className="mt-6 space-y-3">
                   {[
                     "Friendly environment for players and parents",
                     "FA-qualified, DBS-checked coaches",
-                    "Trial sessions available",
+                    "Trials arranged when a squad has room",
                     "Development first, enjoyment always",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
