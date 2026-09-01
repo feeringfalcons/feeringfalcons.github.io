@@ -83,6 +83,21 @@ export function JoinForm() {
 
       <div>
         <label
+          htmlFor="join-child-name"
+          className="block text-sm font-medium text-falcon-charcoal"
+        >
+          Child&apos;s Name
+        </label>
+        <input
+          type="text"
+          id="join-child-name"
+          name="child_name"
+          className="mt-1 block w-full border border-falcon-border bg-white px-4 py-3 text-falcon-charcoal focus:border-falcon-red"
+        />
+      </div>
+
+      <div>
+        <label
           htmlFor="join-age"
           className="block text-sm font-medium text-falcon-charcoal"
         >
