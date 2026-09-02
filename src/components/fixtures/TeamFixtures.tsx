@@ -5,6 +5,7 @@ import { CLUB, type ClubTeam } from "@/lib/constants";
 import { fixturesForTeam, upcoming, describeVenue } from "@/lib/fixtures";
 import { useFullTimeFeed } from "./useFullTimeFeed";
 import { NextMatch } from "./NextMatch";
+import { FixtureStatusTag } from "./FixtureStatusTag";
 
 function Notice({
   heading,
@@ -157,8 +158,15 @@ function UpcomingList({
                 <span className="text-sm text-falcon-charcoal/70">
                   {f.kickoffTbc ? "Kick-off TBC" : f.kickoff}
                 </span>
+                <FixtureStatusTag fixture={f} />
               </div>
-              <p className="mt-1 text-falcon-charcoal">
+              <p
+                className={
+                  f.isOff
+                    ? "mt-1 text-falcon-charcoal/60 line-through"
+                    : "mt-1 text-falcon-charcoal"
+                }
+              >
                 <span className="text-falcon-charcoal/70">v</span> {f.opponent}
               </p>
               {venue.kind === "away" && (

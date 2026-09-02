@@ -4,10 +4,15 @@ import type { ClubTeam } from "@/lib/constants";
  * Turning FA Full-Time's injected HTML table into something we can render.
  *
  * The table has no classes or ids to hook onto, so everything here works off
- * its shape. Two row types:
- *   date group — the only row whose cell carries a colspan, e.g.
+ * its shape. Three row types:
+ *   date group — a single cell carrying a colspan, e.g.
  *                "Sun 06 Sept 2026 06:00"
  *   fixture    — five cells: [competition] [home] ["v"] [away] [venue]
+ *   status     — a single cell carrying a colspan, holding one word about the
+ *                fixture *above* it, e.g. "Postponed"
+ *
+ * Note that date groups and statuses are the same shape. They're told apart by
+ * whether the text parses as a date, which is the only signal the markup gives.
  *
  * Everything below is deliberately defensive: this is third-party markup that
  * can change without notice, and a parse failure should degrade to "no
@@ -27,6 +32,10 @@ export type Fixture = {
   /** Raw venue text. Often unusable — see describeVenue(). */
   venueRaw: string;
   competition: string | null;
+  /** Full-Time's note on the match, e.g. "Postponed". Null for a normal game. */
+  status: string | null;
+  /** True when `status` means the match is not being played. */
+  isOff: boolean;
 };
 
 export type TeamFixture = Fixture & {
@@ -54,6 +63,24 @@ const DAY_LABELS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
  * Rendering it literally would tell parents to turn up at 6am.
  */
 const PLACEHOLDER_KICKOFF = "06:00";
+
+/**
+ * Statuses that mean the match is not being played.
+ *
+ * Deliberately a allow-list of "off" words rather than treating every status as
+ * a cancellation. An unrecognised status is still shown to the reader, but only
+ * these strike the fixture out, so a new Full-Time status can never silently
+ * tell a parent a game is off when it is on. The reverse error is the safe one:
+ * a game shown as on that isn't is exactly the bug this fixes, and it needs a
+ * word we've never seen before to happen.
+ */
+const OFF_STATUS = /postpon|abandon|cancel|void|withdraw/i;
+
+/**
+ * An empty feed still returns a table, holding this instead of any fixtures.
+ * It is the same shape as a status row, so it has to be excluded by name.
+ */
+const NOT_A_STATUS = /^no schedule$/i;
 
 function parseDateHeader(
   text: string,
@@ -137,14 +164,26 @@ function readFixtureRow(cells: Element[]) {
 export function parseFixtures(root: ParentNode): Fixture[] {
   const out: Fixture[] = [];
   let current: ReturnType<typeof parseDateHeader> = null;
+  // Which fixture a status row would belong to. Reset by each date group, so a
+  // stray note can never attach itself to a fixture from the previous day.
+  let awaitingStatus = -1;
 
   root.querySelectorAll("tr").forEach((row) => {
     const cells = Array.from(row.querySelectorAll("td"));
 
     const grouped = cells.find((c) => c.hasAttribute("colspan"));
     if (cells.length === 1 && grouped) {
-      const parsed = parseDateHeader(cellText(grouped));
-      if (parsed) current = parsed;
+      const text = cellText(grouped);
+      const parsed = parseDateHeader(text);
+      if (parsed) {
+        current = parsed;
+        awaitingStatus = -1;
+        return;
+      }
+      if (awaitingStatus >= 0 && text && !NOT_A_STATUS.test(text)) {
+        out[awaitingStatus].status = text;
+        out[awaitingStatus].isOff = OFF_STATUS.test(text);
+      }
       return;
     }
 
@@ -162,7 +201,10 @@ export function parseFixtures(root: ParentNode): Fixture[] {
       away: row_.away,
       venueRaw: row_.venue,
       competition: row_.competition.replace(/:$/, "") || null,
+      status: null,
+      isOff: false,
     });
+    awaitingStatus = out.length - 1;
   });
 
   return out;

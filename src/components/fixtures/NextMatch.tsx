@@ -36,6 +36,21 @@ export function NextMatch({
       </div>
 
       <div className="p-5 sm:p-6">
+        {fixture.isOff && (
+          <div
+            role="status"
+            className="mb-5 border-l-4 border-falcon-red bg-falcon-red/10 px-4 py-3"
+          >
+            <p className="font-heading text-xl tracking-wide text-falcon-red">
+              {fixture.status?.toUpperCase()}
+            </p>
+            <p className="mt-1 text-sm text-falcon-charcoal/80">
+              This match is off. The league will rearrange it, and your team
+              manager will confirm the new date.
+            </p>
+          </div>
+        )}
+
         <p className="font-heading text-[clamp(1.75rem,6vw,2.75rem)] leading-[0.95] text-falcon-red">
           {today ?? fixture.dateLabel}
         </p>
@@ -60,7 +75,7 @@ export function NextMatch({
           <dd className="mt-1 font-heading text-2xl text-falcon-charcoal">
             {fixture.kickoffTbc ? "TO BE CONFIRMED" : fixture.kickoff}
           </dd>
-          {fixture.kickoffTbc && (
+          {fixture.kickoffTbc && !fixture.isOff && (
             <dd className="mt-1 text-sm text-falcon-charcoal/70">
               Leagues usually confirm kick-off times the Sunday before. Check
               with your team manager.

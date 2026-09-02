@@ -12,6 +12,7 @@ import {
 } from "@/lib/fixtures";
 import { useFullTimeFeed } from "./useFullTimeFeed";
 import { useInView } from "./useInView";
+import { FixtureStatusTag } from "./FixtureStatusTag";
 
 /**
  * The club's next matchday: every Falcons fixture in the next week that has any.
@@ -145,8 +146,15 @@ function FixtureRow({ fixture }: { fixture: ClubFixture }) {
         <span className="text-sm text-falcon-charcoal/70">
           {fixture.kickoffTbc ? "Kick-off TBC" : fixture.kickoff}
         </span>
+        <FixtureStatusTag fixture={fixture} />
       </div>
-      <p className="mt-0.5 text-falcon-charcoal">
+      <p
+        className={
+          fixture.isOff
+            ? "mt-0.5 text-falcon-charcoal/60 line-through"
+            : "mt-0.5 text-falcon-charcoal"
+        }
+      >
         <span className="text-falcon-charcoal/70">v</span> {fixture.opponent}
       </p>
       {venue.kind === "away" && (
