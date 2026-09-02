@@ -41,16 +41,16 @@ export function UpdateCards() {
               className="group border-b-2 border-falcon-border p-8 transition-colors hover:border-falcon-red sm:border-b-0 sm:border-r-2 animate-fade-in-up"
             >
               <p className="font-heading text-sm tracking-widest text-falcon-charcoal/70">
-                NEW PLAYERS
+                WANT TO PLAY?
               </p>
               <h3 className="mt-2 font-heading text-3xl text-falcon-charcoal transition-colors group-hover:text-falcon-red sm:text-4xl">
-                ALL ABILITIES
+                JOIN THE
                 <br />
-                WELCOME
+                FALCONS
               </h3>
               <p className="mt-3 max-w-xs text-falcon-charcoal/60">
-                {CLUB.teams.length} teams, Fledglings to U13. Come along and see
-                what we&apos;re about.
+                {CLUB.teams.length} teams, Fledglings to U13. Tell us about your
+                child and we&apos;ll find the right team, if we have room.
               </p>
             </Link>
 
