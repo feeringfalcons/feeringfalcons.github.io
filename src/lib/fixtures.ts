@@ -58,11 +58,27 @@ const MONTH_LABELS = [
 const DAY_LABELS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 /**
- * Both leagues use 06:00 to mean "kick-off not set". Times are only published
- * the Sunday before a match, so nearly every future fixture carries it.
- * Rendering it literally would tell parents to turn up at 6am.
+ * The hours a real kick-off can fall in. Anything outside them is a placeholder.
+ *
+ * Full-Time has no "time not set" value, so leagues type one in. 06:00 is the
+ * common one and 00:00 also appears, both in the same BDYFL feed, and nothing
+ * in the markup tells a placeholder from a real time. Rendering one literally
+ * tells a parent to turn up at midnight, which is what this guard exists to
+ * stop.
+ *
+ * A window rather than a list of known values, because the list was already
+ * wrong once: 06:00 alone shipped, then 00:00 turned up in the same feed. The
+ * bounds are deliberately wide, since a real kick-off wrongly hidden is worse
+ * than a placeholder shown: games genuinely run from 9am to mid-afternoon, and
+ * midweek evening rearrangements push later still.
  */
-const PLACEHOLDER_KICKOFF = "06:00";
+const REAL_KICKOFF_HOURS = { from: 7, until: 22 };
+
+function isPlaceholderKickoff(time: string): boolean {
+  const hour = Number(time.split(":")[0]);
+  if (Number.isNaN(hour)) return false;
+  return hour < REAL_KICKOFF_HOURS.from || hour >= REAL_KICKOFF_HOURS.until;
+}
 
 /**
  * Statuses that mean the match is not being played.
@@ -105,7 +121,7 @@ function parseDateHeader(
   const dateLabel = `${DAY_LABELS[d.getUTCDay()]} ${pad(day)} ${MONTH_LABELS[month - 1]}`;
 
   const raw = m[4] ?? null;
-  const kickoff = !raw || raw === PLACEHOLDER_KICKOFF ? null : raw;
+  const kickoff = !raw || isPlaceholderKickoff(raw) ? null : raw;
 
   return { dateISO, dateLabel, kickoff };
 }
