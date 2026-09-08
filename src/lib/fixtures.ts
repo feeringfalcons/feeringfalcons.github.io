@@ -413,5 +413,12 @@ export function describeVenue(f: TeamFixture): VenueInfo {
   // would be worse than admitting we don't know.
   if (/\bU\s?\d{1,2}\b/i.test(v)) return { kind: "unknown" };
 
+  // C&DYL fill this column with "As per handbook" rather than a ground: it
+  // points club officials at the league handbook, and means nothing to a
+  // parent trying to find the pitch. Every C&DYL fixture carries it, and it
+  // has no age marker, so without this it would be offered as somewhere to
+  // drive to.
+  if (/^as per handbook$/i.test(v)) return { kind: "unknown" };
+
   return { kind: "away", name: v };
 }

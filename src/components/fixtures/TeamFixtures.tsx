@@ -71,7 +71,7 @@ export function TeamFixtures({
       <Notice heading="COULDN'T LOAD FIXTURES">
         Fixtures come from FA Full-Time and it didn&apos;t respond.{" "}
         <a
-          href={CLUB.fullTime.publicUrl}
+          href={feed?.publicUrl ?? CLUB.fullTime.publicUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-falcon-red underline"

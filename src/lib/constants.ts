@@ -111,10 +111,24 @@ export const CLUB = {
     // and would need a third code from that league's Full-Time.
     // Keyed by ClubTeamSource so a team resolves straight to its feed.
     feeds: {
-      bdyfl: { label: "Blackwater & Dengie", code: "549852193" },
-      cdyl: { label: "Colchester & District", code: "869357799" },
+      bdyfl: {
+        label: "Blackwater & Dengie",
+        code: "549852193",
+        publicUrl: "https://fulltime.thefa.com/index.html?league=625214",
+      },
+      cdyl: {
+        label: "Colchester & District",
+        // Regenerated 2026-09-04 for season 2026-27. The previous code was
+        // bound to 2025-26 and so returned "No Schedule" all season, which the
+        // site correctly but unhelpfully rendered as "not published yet".
+        // A snippet is season-specific: expect to regenerate this each summer.
+        code: "977761099",
+        publicUrl: "https://fulltime.thefa.com/index.html?league=118005812",
+      },
     } as const,
-    publicUrl: "https://fulltime.thefa.com/home/index.html?league=702034869",
+    // Fallback for when no single league is in scope. The per-feed links above
+    // are better wherever the team, and so the league, is known.
+    publicUrl: "https://fulltime.thefa.com/",
   },
   values: [
     { title: "Positivity First", description: "Play positive, win positive" },
