@@ -13,9 +13,16 @@ Outputs (all into public/):
     player-{640,1024,1536}.webp   responsive hero sources
     player-fallback.jpg           for the ~3% of browsers without WebP
     og-image.jpg                  1200x630 social share card
+    tournament-og.jpg             1200x630 share card for /tournament
+
+The tournament card carries the date, so regenerate it each year once the new
+date is set (edit TOURNAMENT_CARD below). To rebuild just that card:
+
+    python scripts/build-images.py tournament
 """
 
 import os
+import sys
 import urllib.request
 from pathlib import Path
 
@@ -104,11 +111,87 @@ def og_card() -> None:
     print(f"  {out.name}: {out.stat().st_size / 1024:.0f} KB")
 
 
+# Text for the /tournament share card. Keep in step with TOURNAMENT in
+# src/lib/constants.ts. This is what coaches see when the link is pasted
+# into a WhatsApp group, before anyone taps it.
+TOURNAMENT_CARD = {
+    "kicker": "FEERING FALCONS PRESENT",
+    "date": "SAT 12 JUNE 2027",
+    "facts": "ELM FARM, MARKS TEY  ·  U7 TO U15  ·  100+ TEAMS",
+}
+
+
+def tournament_card() -> None:
+    font_path = str(_bebas())
+    w, h = 1200, 630
+    card = Image.new("RGB", (w, h), RED)
+
+    # Kit texture on the right, as on the main card, with the logo over it.
+    kit = Image.open(ASSETS / "player.png").convert("RGB")
+    scale = max(w / kit.width, h / kit.height)
+    kit = kit.resize((round(kit.width * scale), round(kit.height * scale)), Image.LANCZOS)
+    left, top = (kit.width - w) // 2, (kit.height - h) // 2
+    card = Image.blend(card, kit.crop((left, top, left + w, top + h)), 0.30)
+    scrim = Image.new("L", (w, 1))
+    for x in range(w):
+        scrim.putpixel((x, 0), 255 if x < 640 else max(0, int(255 * (1 - (x - 640) / 480))))
+    card = Image.composite(Image.new("RGB", (w, h), RED), card, scrim.resize((w, h)))
+
+    logo = Image.open(PUBLIC / "logo.png").convert("RGBA")
+    logo = logo.resize((round(logo.width * 330 / logo.height), 330), Image.LANCZOS)
+    card.paste(logo, (w - logo.width - 70, 92), logo)
+
+    x = 72
+    kicker = ImageFont.truetype(font_path, 38)
+    big = ImageFont.truetype(font_path, 132)
+    date = ImageFont.truetype(font_path, 84)
+    facts = ImageFont.truetype(font_path, 36)
+
+    title_lines = [("5-A-SIDE", 96), ("TOURNAMENT", 206)]
+    shadow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    sdraw = ImageDraw.Draw(shadow)
+    for text, y in title_lines:
+        sdraw.text((x, y), text, font=big, fill=(0, 0, 0, 90))
+    card = Image.alpha_composite(
+        card.convert("RGBA"), shadow.filter(ImageFilter.GaussianBlur(10))
+    ).convert("RGB")
+
+    draw = ImageDraw.Draw(card)
+    draw.text((x, 52), TOURNAMENT_CARD["kicker"], font=kicker, fill=(255, 214, 221))
+    for text, y in title_lines:
+        draw.text((x, y), text, font=big, fill=WHITE)
+
+    # The date sits on an angled white band (the falcon-wing motif): it is the
+    # one fact a coach scanning a group chat needs.
+    tw = draw.textlength(TOURNAMENT_CARD["date"], font=date)
+    band_top, band_h, slant = 352, 104, 26
+    band_right = x + tw + 56
+    draw.polygon(
+        [(x - 72, band_top), (band_right + slant, band_top),
+         (band_right, band_top + band_h), (x - 72, band_top + band_h)],
+        fill=WHITE,
+    )
+    draw.text((x, band_top + 10), TOURNAMENT_CARD["date"], font=date, fill=RED)
+
+    draw.text((x, 484), TOURNAMENT_CARD["facts"], font=facts, fill=WHITE)
+    draw.polygon([(0, h), (w, h), (w, h - 64), (0, h - 8)], fill=CHARCOAL)  # wing motif
+
+    out = PUBLIC / "tournament-og.jpg"
+    card.save(out, "JPEG", quality=86, optimize=True, progressive=True)
+    print(f"  {out.name}: {out.stat().st_size / 1024:.0f} KB")
+
+
 if __name__ == "__main__":
+    if sys.argv[1:] == ["tournament"]:
+        print("tournament share card:")
+        tournament_card()
+        sys.exit(0)
     print("hero variants:")
     hero_variants()
     print("share card:")
     og_card()
+    print("tournament share card:")
+    tournament_card()
     size = os.path.getsize(ASSETS / "player.png") / 1024 / 1024
     print(f"\nmaster assets/player.png is {size:.2f} MB and lives outside public/, "
           "so it is never deployed.")

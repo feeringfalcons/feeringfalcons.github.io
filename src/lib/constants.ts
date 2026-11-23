@@ -208,6 +208,10 @@ export const TOURNAMENT = {
   dateShort: "12 June 2027",
   dateISO: "2027-06-12",
   venue: "Elm Farm Football Ground, Elm Lane, Nr Feering, Essex",
+  // Pre-filled text for the "Share on WhatsApp" button; the page link is
+  // appended. Rewrite the last sentence when entries open.
+  shareMessage:
+    "Feering Falcons 5-a-side tournament: Saturday 12th June 2027 at Elm Farm, Marks Tey. Under 7s to Under 15s, over 100 teams. Entries open soon, details here:",
   // Fee and deadline below are the 2026 figures. Confirm both for 2027 before
   // the entry form goes back up.
   entryFee: 50,

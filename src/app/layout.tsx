@@ -26,7 +26,8 @@ export const metadata: Metadata = {
     "Youth football club based in Feering and Kelvedon, Essex. Teams from Fledglings to Under 13 playing in the Colchester & District and Blackwater & Dengie youth leagues.",
   // Absolute URLs are required for share previews — without metadataBase the
   // OG image resolves relatively and Facebook/WhatsApp silently drop it.
-  metadataBase: new URL("https://feeringfalcons.com"),
+  // Set per deploy in next.config.ts (live domain, or the test site's path).
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://feeringfalcons.com"),
   openGraph: {
     type: "website",
     locale: "en_GB",
