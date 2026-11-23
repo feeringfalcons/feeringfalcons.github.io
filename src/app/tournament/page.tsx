@@ -138,7 +138,7 @@ export default function TournamentPage() {
               href={`mailto:${TOURNAMENT.contact.email}`}
               className="border-2 border-white/60 px-7 py-3 font-heading text-lg tracking-wider text-white transition-colors hover:border-white hover:bg-white/10"
             >
-              QUESTIONS? EMAIL ANDREW
+              QUESTIONS? EMAIL US
             </a>
           </div>
         </Container>
@@ -280,8 +280,7 @@ export default function TournamentPage() {
               <p className="font-heading text-sm tracking-widest text-white/90">
                 TOURNAMENT CONTACT
               </p>
-              <p className="mt-1 text-lg text-white">{TOURNAMENT.contact.name}</p>
-              <p className="text-white/90">
+              <p className="mt-1 text-lg text-white">
                 Questions about the {TOURNAMENT.nextYear} tournament? Get in
                 touch.
               </p>
