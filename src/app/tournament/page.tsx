@@ -6,17 +6,17 @@ import { TOURNAMENT, CLUB } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "5-A-Side Tournament",
-  description: `The Feering Falcons 5-A-Side Tournament, held at Elm Farm every June. The ${TOURNAMENT.lastHeld.year} tournament has finished; the ${TOURNAMENT.nextYear} date is still to be confirmed and entries are not yet open.`,
+  description: `The Feering Falcons 5-A-Side Tournament returns to Elm Farm on ${TOURNAMENT.date}. Entries are not open yet; details will follow on this page.`,
 };
 
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${CLUB.ground.mapQuery}`;
 
 /**
- * Holding page between tournaments.
+ * Holding page: the next date is set, but entries aren't open yet.
  *
  * The day-of content — registration times, what to bring, the full rules, the
- * information letter — is deliberately not here. With no date set it is noise
- * at best and misleading at worst. It all still lives in constants.ts
+ * information letter — is deliberately not here. Until entries open, the fee
+ * and times aren't confirmed, so showing them could mislead people. It all still lives in constants.ts
  * (TOURNAMENT.registration, TOURNAMENT_RULES, the entry form component), so
  * bringing it back for {TOURNAMENT.nextYear} is a matter of restoring sections,
  * not rewriting them.
@@ -40,12 +40,11 @@ export default function TournamentPage() {
             TOURNAMENT
           </h1>
           <p className="mt-6 font-heading text-[clamp(1.5rem,4vw,2.5rem)] text-white/90">
-            BACK IN {TOURNAMENT.nextYear}
+            {TOURNAMENT.date.toUpperCase()}
           </p>
           <p className="mt-4 max-w-xl text-lg text-white/90">
-            Our flagship event, held at Elm Farm every {TOURNAMENT.lastHeld.monthHint}.
-            The {TOURNAMENT.lastHeld.year} tournament is done and dusted. The
-            date for {TOURNAMENT.nextYear} hasn&apos;t been set yet.
+            Our flagship event is back at Elm Farm. Put the date in the diary.
+            Entry details will go up here when entries open.
           </p>
         </Container>
       </section>
@@ -54,7 +53,7 @@ export default function TournamentPage() {
       <section className="bg-falcon-red-dark py-5">
         <Container>
           <p className="font-heading text-lg tracking-wider text-white sm:text-xl">
-            DATE TO BE CONFIRMED &middot; ENTRIES ARE NOT OPEN YET
+            {TOURNAMENT.dateShort.toUpperCase()} &middot; ENTRIES ARE NOT OPEN YET
           </p>
         </Container>
       </section>
@@ -92,17 +91,16 @@ export default function TournamentPage() {
                 WHAT HAPPENS NEXT
               </p>
               <h2 className="mt-2 font-heading text-[clamp(2rem,6vw,3.5rem)] leading-[0.9] text-white">
-                WE&apos;LL ANNOUNCE THE DATE HERE
+                ENTRIES OPEN HERE
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-white/80">
-                Once the {TOURNAMENT.nextYear} date is fixed, it will go up on
-                this page along with entry details, the fee, registration times
-                and the full rules. Nothing to do in the meantime: there is no
-                waiting list and no entry form open.
+                The date is set for {TOURNAMENT.date}. When entries open, this
+                page will have the entry form, the fee, registration times and
+                the full rules. Until then there is nothing to do: there is no
+                waiting list, and the entry form isn&apos;t open yet.
               </p>
               <p className="mt-4 leading-relaxed text-white/70">
-                The quickest way to hear about it is our Facebook page, where
-                the date usually goes out first.
+                The quickest way to hear when entries open is our Facebook page.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a

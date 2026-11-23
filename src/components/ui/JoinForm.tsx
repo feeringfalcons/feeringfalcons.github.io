@@ -37,7 +37,7 @@ export function JoinForm() {
       <div role="status" className="border-l-4 border-green-600 bg-green-50 p-6">
         <p className="font-heading text-xl text-green-800">ENQUIRY SENT</p>
         <p className="mt-2 text-sm text-green-700">
-          Our secretary will pass this on to the right team manager, who will
+          We&apos;ll pass this on to the right team manager, who will
           come back to you about where there is room.
         </p>
         <button

@@ -10,7 +10,7 @@ export function UpdateCards() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="font-heading text-sm tracking-widest text-white/70">
-              BACK IN {TOURNAMENT.nextYear}
+              {TOURNAMENT.date.toUpperCase()}
             </p>
             <h2 className="mt-3 font-heading text-[clamp(2.5rem,7vw,5rem)] leading-[0.85] text-white">
               5-A-SIDE
@@ -18,9 +18,8 @@ export function UpdateCards() {
               TOURNAMENT
             </h2>
             <p className="mt-4 max-w-lg text-lg text-white/60">
-              Over 100 teams at Elm Farm every June, U7 through U15. The{" "}
-              {TOURNAMENT.lastHeld.year} tournament has been and gone. The{" "}
-              {TOURNAMENT.nextYear} date is still to be confirmed.
+              Over 100 teams at Elm Farm every June, U7 through U15. The date
+              for {TOURNAMENT.nextYear} is set. Entries aren&apos;t open yet.
             </p>
             <Link
               href="/tournament"

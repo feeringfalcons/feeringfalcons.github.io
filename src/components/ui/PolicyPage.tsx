@@ -48,7 +48,9 @@ export function PolicyPage({
               </a>
             </p>
             <p>
-              Secretary: {CLUB.officers.secretary.name},{" "}
+              Secretary:{" "}
+              {CLUB.officers.secretary.name &&
+                `${CLUB.officers.secretary.name}, `}
               <a
                 href={`mailto:${CLUB.officers.secretary.email}`}
                 className="hover:text-falcon-red"

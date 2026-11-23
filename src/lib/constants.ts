@@ -158,9 +158,13 @@ export const CLUB = {
     treasurer: "treasurer@feeringfalcons.com",
     childwelfare: "childwelfare@feeringfalcons.com",
   },
+  // name: null means the post has no named holder right now, so the site shows
+  // the role and the mailbox only. The secretary post has been unfilled since
+  // Phil Jenkins died in Oct 2026; per the Oct 2026 minutes, his duties are
+  // split between other officers for now. Put a name back once someone takes it on.
   officers: {
     chairman: { name: "D Scott", email: "chairman@feeringfalcons.com" },
-    secretary: { name: "P Jenkins", email: "secretary@feeringfalcons.com" },
+    secretary: { name: null, email: "secretary@feeringfalcons.com" },
     treasurer: { name: "A Booth", email: "treasurer@feeringfalcons.com" },
     childWelfare: { name: "I Hayhoe", email: "childwelfare@feeringfalcons.com" },
   },
@@ -185,12 +189,14 @@ export const CLUB = {
 export const TOURNAMENT = {
   name: "Feering Falcons 5-A-Side Tournament",
 
-  // Where we are in the cycle. The 2026 event is done, the 2027 date isn't set
-  // and entries are not open, so /tournament runs as a holding page.
+  // Where we are in the cycle. The 2027 date was set at the Oct 2026 committee
+  // meeting, but the fee and entry deadline aren't confirmed, so /tournament
+  // gives the date and says entries aren't open yet.
   //   "announced" -> date known, entries open (restore the entry form)
+  //   "dated"     -> date known, entries not open yet  <-- current
   //   "imminent"  -> entries closed, day info live (registration times, rules)
-  //   "between"   -> event passed, next date not yet set  <-- current
-  status: "between" as "announced" | "imminent" | "between",
+  //   "between"   -> event passed, next date not yet set
+  status: "dated" as "announced" | "dated" | "imminent" | "between",
   nextYear: 2027,
   lastHeld: {
     date: "Saturday 13th June 2026",
@@ -198,9 +204,12 @@ export const TOURNAMENT = {
     monthHint: "June",
   },
 
-  date: "Saturday 13th June 2026",
-  dateISO: "2026-06-13",
+  date: "Saturday 12th June 2027",
+  dateShort: "12 June 2027",
+  dateISO: "2027-06-12",
   venue: "Elm Farm Football Ground, Elm Lane, Nr Feering, Essex",
+  // Fee and deadline below are the 2026 figures. Confirm both for 2027 before
+  // the entry form goes back up.
   entryFee: 50,
   deadline: "31st May 2026",
   deadlineISO: "2026-05-31",

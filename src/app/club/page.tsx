@@ -103,7 +103,7 @@ export default function ClubInfoPage() {
                     {officer.role.toUpperCase()}
                   </p>
                   <p className="mt-1 text-lg font-medium text-falcon-charcoal">
-                    {officer.name}
+                    {officer.name ?? `Club ${officer.role}`}
                   </p>
                   <a
                     href={`mailto:${officer.email}`}
