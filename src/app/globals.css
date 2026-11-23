@@ -16,14 +16,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* var(--font-source-serif), not var(--font-body): see the note on h1-h6. */
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-source-serif), Georgia, serif;
   color: var(--color-falcon-charcoal);
   background: var(--color-falcon-cream);
 }
 
+/* Not var(--font-heading) (nor var(--font-body) for body, above):
+   `@theme inline` inlines its values into utilities
+   and never emits them as real CSS variables, so that var() was undefined and
+   every heading fell back to the system font, beating the .font-heading class
+   (this rule is unlayered, utilities are layered). Use the next/font variable,
+   which is real. */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-bebas-neue), system-ui, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
